@@ -1,10 +1,9 @@
-void initialise()
+void initialize()
 {
   //Setting up the background and text parameters.
-  background(0);
   
   //Setting up variables needed for the starting screen
-  int i;
+  int i, counter = 0, start_time;
   String main_text = "Initialising...";
   float x_pos, y_pos;  
   float[] size_of_text = new float[main_text.length()];
@@ -23,22 +22,18 @@ void initialise()
   x_pos = ((width/2) - (text_width/2));
   y_pos = (height/2 + 5);
   
-  while(frameCount % 300 != 0)
-  {
-    textAlign(LEFT);
-    noStroke();
-    fill(230);
-    text('_', x_pos, y_pos);
-      
-    stroke(0);
-    fill(255);
-    text('_', x_pos, y_pos);   
-      
+  delay(500);
+  fill(255);
+  text("_", x_pos, y_pos);
+  delay(2000);
   
+  fill(0);
+  text("_", x_pos, y_pos);
+  delay(1000);
   
-  for(i = 0; i < main_text.length(); i++)
-  {
-     
-  }
-  
+  fill(255);
+  text("_", x_pos, y_pos);
+  delay(2000);
+  println("Hi");
+
 }

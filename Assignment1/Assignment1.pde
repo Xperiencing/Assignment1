@@ -7,11 +7,11 @@ void setup()
 {
   //Setting up the screen size.
   //fullScreen();
+  background(0);
   size(400, 400);
-  
 }
 
 void draw()
 {
-  initialise();  
+  initialize();  
 }
