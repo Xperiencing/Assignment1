@@ -24,8 +24,7 @@ void initialize()
   x_pos = ((width/2) - (text_width/2));
   y_pos = (height/2 + 5);
   
-  println(main_text.length());
-  
+  //The blinking of the underscore when the program first runs.
   if(check == 0)
   {
     start_blinks(x_pos, y_pos);
@@ -33,16 +32,32 @@ void initialize()
   
   if (check == 1)
   {
+    //Resetting the background to black so the underscore does not
+    // keep reprinting on screen.
+    background(0);
+    
     for(i = 0; i < counter; i++)
     {
       if(millis() > (start_time + 4000)) 
       {
         fill(255);
-        text('_', x_pos, y_pos);
+        
+        //This prints the underscore at the last character after each iteration.
+        if(i == (counter - 1))
+        {
+          text('_', x_pos, y_pos);
+        }
+        
+        //Printing each letter
         text(main_text.charAt(i), x_pos, y_pos - 1);
         
-        x_pos += size_of_text[1];
+        //Getting the correct spacing between letters.
+        if(i != counter - 1)
+        {
+          x_pos += (size_of_text[i] * .5) + (size_of_text[i + 1] * .5);
+        }
         
+        //This is a check which will trigger when the animation has finished.
         if(counter == (main_text.length()))
         {
           check = 2;  
@@ -50,6 +65,14 @@ void initialize()
       }
     }
     
+    //Incrementing counter so the for loop can take in another letter on the 
+    //next iteration.
     counter++;
+    delay(25);
+  }
+  
+  if (check == 2)
+  {
+    end_blinks(x_pos, y_pos);  
   }
 }
