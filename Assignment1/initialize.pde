@@ -1,11 +1,9 @@
 void initialize()
 {
   //Setting up the text parameters.
-  textAlign(CENTER);
-  textSize(32);
   
   //Setting up variables needed for the starting screen
-  int i;
+  int i, counter = 1;
   String main_text = "Initialising...";
   float x_pos, y_pos;  
   float[] size_of_text = new float[main_text.length()];
@@ -24,8 +22,6 @@ void initialize()
   x_pos = ((width/2) - (text_width/2));
   y_pos = (height/2 + 5);
   
-  println(main_text.length());
-  
   if(check == 0)
   {
     start_blinks(x_pos, y_pos);
@@ -33,23 +29,17 @@ void initialize()
   
   if (check == 1)
   {
-    for(i = 0; i < counter; i++)
+    for( i = 0; i < counter; i++)
     {
       if(millis() > (start_time + 4000)) 
       {
+        background(0);
         fill(255);
         text('_', x_pos, y_pos);
-        text(main_text.charAt(i), x_pos, y_pos - 1);
+        text(main_text.charAt(i), x_pos, y_pos - 3);
         
-        x_pos += size_of_text[1];
-        
-        if(counter == (main_text.length()))
-        {
-          check = 2;  
-        }
+        x_pos += size_of_text[i];
       }
     }
-    
-    counter++;
   }
 }
