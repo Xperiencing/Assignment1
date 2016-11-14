@@ -1,51 +1,56 @@
-void start_blinks(float x_pos, float y_pos)
+void blink(float x_pos, float y_pos, int num_blinks, int finish)
 {
-  if(millis() > start_time && millis() < (start_time + 1000)) 
+  //These are the variables that control the length of the blink.
+  int on_time = 1300, off_time = 300;
+  
+  if(first_run == 0)
+  {
+    start_time = millis();
+    first_run++;
+    j = 1;
+    
+  }
+  println(start_time);
+  
+  if(millis() > (start_time + (off_time + (on_time * (j - 1)))) && millis() < (start_time + (on_time * j))) 
   {
     fill(255);
     text('_', x_pos, y_pos);
-    text('_', x_pos, y_pos);
+    
+    if(check == 0)
+    {
+      check = 1;  
+    }
   }
   
-  if(millis() > (start_time + 1000) && millis() < (start_time + 1200))
+  else
   {
-    background(0);
-  }
-  
-  if(millis() > (start_time + 1200) && millis() < (start_time + 2000)) 
-  {
-    fill(255);
-    text('_', x_pos, y_pos);
-    text('_', x_pos, y_pos);
-  }
-  
-  if(millis() > (start_time + 2000) && millis() < (start_time + 2200))
-  {
-    background(0);
-  }
-  
-  if(millis() > (start_time + 2200) && millis() < (start_time + 3000)) 
-  {
-    fill(255);
+    //The colour is set to black so the underscore seems to dissappear, which allows the main 
+    //string to stay printed in the same location.
+    fill(0);
     text('_', x_pos, y_pos);
     text('_', x_pos, y_pos);
+    
+    //This if statement allows for j to be incremented which sets the window of time for the 
+    //first if statement forward.
+    if(check == 1 && j <= num_blinks)
+    {
+      j++; 
+      check = 0;  
+    }
+    
   }
   
-  if(millis() > (start_time + 3000) && millis() < (start_time + 3200))
+  if(millis() > start_time + (on_time * num_blinks)) 
   {
-    background(0);
+    if(finish == 0)
+    {
+      function_check = 1;
+    }
+    else
+    {
+      menu_check = 1;
+    }
+    
   }
-  
-  if(millis() > (start_time + 3200) && millis() < (start_time + 4000)) 
-  {
-    fill(255);
-    text('_', x_pos, y_pos);
-    text('_', x_pos, y_pos);
-  }
-  
-  if(millis() > (start_time + 4000)) 
-  {
-    check = 1;
-  }
-  
 }

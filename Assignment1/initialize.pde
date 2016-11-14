@@ -5,9 +5,9 @@ void initialize()
   textSize(32);
   
   //Setting up variables needed for the starting screen
-  int i;
+  int i, num_blinks = 4, finish = 0;
   String main_text = "Initialising...";
-  float x_pos, y_pos;  
+  float x_pos, y_pos; 
   float[] size_of_text = new float[main_text.length()];
   
   //for loop to get the length of each character in the string 
@@ -23,14 +23,15 @@ void initialize()
   //Getting the positions of each of the underscores.
   x_pos = ((width/2) - (text_width/2));
   y_pos = (height/2 + 5);
+
   
   //The blinking of the underscore when the program first runs.
-  if(check == 0)
+  if(function_check == 0)
   {
-    start_blinks(x_pos, y_pos);
+    blink(x_pos, y_pos, num_blinks, finish);
   }
   
-  if (check == 1)
+  if (function_check == 1)
   {
     //Resetting the background to black so the underscore does not
     // keep reprinting on screen.
@@ -60,19 +61,25 @@ void initialize()
         //This is a check which will trigger when the animation has finished.
         if(counter == (main_text.length()))
         {
-          check = 2;  
+          function_check = 2;
+          first_run = 0;
         }
       }
+      
+      new_x_pos = x_pos;
+      new_y_pos = y_pos;
     }
     
     //Incrementing counter so the for loop can take in another letter on the 
     //next iteration.
     counter++;
-    delay(25);
+    delay(75);
   }
   
-  if (check == 2)
+  //This allows the cursor to blink a few more times before the boot up screen finishes.
+  if (function_check == 2)
   {
-    end_blinks(x_pos, y_pos);  
+    finish = 1;
+    blink(new_x_pos, new_y_pos, num_blinks, finish);  
   }
 }
