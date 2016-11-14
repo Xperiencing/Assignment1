@@ -3,15 +3,15 @@ void blink(float x_pos, float y_pos, int num_blinks, int finish)
   //These are the variables that control the length of the blink.
   int on_time = 1300, off_time = 300;
   
+  //A first time set up when running the blink function
   if(first_run == 0)
   {
     start_time = millis();
     first_run++;
     j = 1;
-    
   }
-  println(start_time);
   
+  //This will print the underscore underneath either the first or last character.
   if(millis() > (start_time + (off_time + (on_time * (j - 1)))) && millis() < (start_time + (on_time * j))) 
   {
     fill(255);
@@ -50,6 +50,9 @@ void blink(float x_pos, float y_pos, int num_blinks, int finish)
     else
     {
       menu_check = 1;
+      function_check = 0;
+      j = 0;
+      background(0);
     }
     
   }

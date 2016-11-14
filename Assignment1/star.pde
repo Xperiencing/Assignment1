@@ -23,11 +23,5 @@ class Star
                            , map(position.y, -5, 5, 0, height));
   
   }
-  
-  String toString()
-  {
-    return hab + "\t" + name + "\t" + distance + "\t" + x_cord + "\t" + y_cord + "\t" + z_cord + "\t" + star_size;
-  }
-  
-  
+
 }

@@ -3,6 +3,7 @@ void initialize()
   //Setting up the text parameters.
   textAlign(CENTER);
   textSize(32);
+  textFont(mono);
   
   //Setting up variables needed for the starting screen
   int i, num_blinks = 4, finish = 0;
