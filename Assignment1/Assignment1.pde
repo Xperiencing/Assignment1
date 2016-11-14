@@ -14,6 +14,8 @@ void setup()
   fullScreen();
   background(0);
   stroke(0);
+  
+  load_data();
 }
 
 void draw()
