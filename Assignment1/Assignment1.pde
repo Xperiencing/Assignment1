@@ -7,7 +7,10 @@ int start_time, counter = 1;
 int function_check = 0, menu_check = 0;
 int first_run = 0, j = 1, check = 0;
 float new_x_pos = 0, new_y_pos = 0;
-int fade_in = 0;
+int fade_in = 0, shooting_star_fade = 0;
+
+float shooting_star_x;
+float shooting_star_y;
 
 PFont mono;
 
@@ -28,12 +31,12 @@ void setup()
 
 void draw()
 {
-  if(menu_check == 0)
+  if(menu_check == 1)
   {
     initialize();
   }
   
-  if(menu_check == 1)
+  if(menu_check == 0)
   {
     star_map();  
   }
