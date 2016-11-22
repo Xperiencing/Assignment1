@@ -19,7 +19,8 @@ ArrayList<Star> stars_list = new ArrayList<Star>();
 void setup()
 {
   //Setting up the screen size.
-  fullScreen();
+  //fullScreen();
+  size(1000, 1000);
   background(0);
   stroke(0);
   smooth(8);
@@ -31,13 +32,29 @@ void setup()
 
 void draw()
 {
-  if(menu_check == 1)
+  if(menu_check == 3)
   {
     initialize();
   }
   
+  if(menu_check == 3)
+  {
+    if(j > 0)
+    {
+      delay(1000);
+      menu_check = 2;
+    }
+    
+    if(j == 0)
+    {
+      background(0);
+      j++;
+    }
+    
+  }
   if(menu_check == 0)
   {
-    star_map();  
+    star_map();
+    select_star();
   }
 }

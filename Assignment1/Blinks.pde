@@ -52,7 +52,7 @@ void blink(float x_pos, float y_pos, int num_blinks, int finish)
       menu_check = 1;
       function_check = 0;
       counter = 0;
-      delay(2000);
+      j = 0;
     }
     
   }
