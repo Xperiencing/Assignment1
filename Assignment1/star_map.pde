@@ -77,40 +77,58 @@ void select_star()
       if(counter > 360)
       {
           temp_width = 400;
-          temp_height = 300;
+          temp_height = 150;
+          
           fill(50);
-        
+          textSize(20);
+          
+          //Each if statement containes parameters for where the text and info boxes should be positioned.
           if(temp_x_pos < width/2 && temp_y_pos < height/2)
           {
+             //This creates two lines coming from the animated circle which will lead into a box.
              line(temp_x_pos + margin/2, temp_y_pos, temp_x_pos + margin, temp_y_pos);
              line(temp_x_pos + margin, temp_y_pos, temp_x_pos + (margin * 2), temp_y_pos + (margin * 2));
              
-             Box info_box = new Box(temp_width, temp_height, temp_x_pos + (margin * 2), temp_y_pos + (margin * 2));
+             //A new object of the box class is created with parameters meant to match up with the previous lines drawn.
+             Box info_box = new Box(temp_width, temp_height, temp_x_pos + (margin * 2), temp_y_pos + (margin * 2), i);
              info_box.draw_box();
+             
+             //This writes the text neatly into the box that is drawn.
+             fill(255);
+             text(info_box.toString(), (temp_x_pos + (margin * 2) + 5), (temp_y_pos + (margin * 2)) + 20, i);
           }
           else if(temp_x_pos > width/2 && temp_y_pos < height/2)
           {
             line(temp_x_pos - margin/2, temp_y_pos, temp_x_pos - margin, temp_y_pos);
             line(temp_x_pos - margin, temp_y_pos, temp_x_pos - (margin * 2), temp_y_pos + (margin * 2));
             
-            Box info_box = new Box(temp_width, temp_height, temp_x_pos - (margin * 10), temp_y_pos + (margin * 2));
+            Box info_box = new Box(temp_width, temp_height, temp_x_pos - (margin * 10), temp_y_pos + (margin * 2), i);
             info_box.draw_box();
+            
+            fill(255);
+            text(info_box.toString(), (temp_x_pos - (margin * 10)) + 5, (temp_y_pos + (margin * 2)) + 20, i);
           }
           else if(temp_x_pos < width/2 && temp_y_pos > height/2)
           {
             line(temp_x_pos + margin/2, temp_y_pos, temp_x_pos + margin, temp_y_pos);
             line(temp_x_pos + margin, temp_y_pos, temp_x_pos + (margin * 2), temp_y_pos - (margin * 2));
             
-            Box info_box = new Box(temp_width, temp_height, temp_x_pos + (margin * 2), temp_y_pos - (margin * 8));
+            Box info_box = new Box(temp_width, temp_height, temp_x_pos + (margin * 2), temp_y_pos - (margin * 5), i);
             info_box.draw_box();
+            
+            fill(255);
+            text(info_box.toString(), (temp_x_pos + (margin * 2)) + 5, (temp_y_pos - (margin * 5)) + 20, i);
           }
           else
           {
             line(temp_x_pos - margin/2, temp_y_pos, temp_x_pos - margin, temp_y_pos);
             line(temp_x_pos - margin, temp_y_pos, temp_x_pos - (margin * 2), temp_y_pos - (margin * 2));
             
-            Box info_box = new Box(temp_width, temp_height, temp_x_pos - (margin * 10), temp_y_pos - (margin * 8));
+            Box info_box = new Box(temp_width, temp_height, temp_x_pos - (margin * 10), temp_y_pos - (margin * 5), i);
             info_box.draw_box();
+            
+            fill(255);
+            text(info_box.toString(), (temp_x_pos - (margin * 10)) + 5, (temp_y_pos - (margin * 5)) + 20, i);
           }
       }
     }
