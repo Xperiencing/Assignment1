@@ -67,8 +67,8 @@ void initialize()
         }
       }
       
-      new_x_pos = x_pos;
-      new_y_pos = y_pos;
+      temp_x_pos = x_pos;
+      temp_y_pos = y_pos;
     }
     
     //Incrementing counter so the for loop can take in another letter on the 
@@ -81,6 +81,6 @@ void initialize()
   if (function_check == 2)
   {
     finish = 1;
-    blink(new_x_pos, new_y_pos, num_blinks, finish);  
+    blink(temp_x_pos, temp_y_pos, num_blinks, finish);  
   }
 }
