@@ -10,6 +10,7 @@ int fade_in = 0, shooting_star_fade = 0;
 
 float temp_x_pos = 0, temp_y_pos = 0;
 float temp_star_size = 0;
+float temp_width = 0, temp_height = 0;
 
 PFont mono;
 

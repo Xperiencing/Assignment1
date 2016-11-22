@@ -76,21 +76,41 @@ void select_star()
       
       if(counter > 360)
       {
+          temp_width = 400;
+          temp_height = 300;
+          fill(50);
+        
           if(temp_x_pos < width/2 && temp_y_pos < height/2)
           {
              line(temp_x_pos + margin/2, temp_y_pos, temp_x_pos + margin, temp_y_pos);
+             line(temp_x_pos + margin, temp_y_pos, temp_x_pos + (margin * 2), temp_y_pos + (margin * 2));
+             
+             Box info_box = new Box(temp_width, temp_height, temp_x_pos + (margin * 2), temp_y_pos + (margin * 2));
+             info_box.draw_box();
           }
           else if(temp_x_pos > width/2 && temp_y_pos < height/2)
           {
             line(temp_x_pos - margin/2, temp_y_pos, temp_x_pos - margin, temp_y_pos);
+            line(temp_x_pos - margin, temp_y_pos, temp_x_pos - (margin * 2), temp_y_pos + (margin * 2));
+            
+            Box info_box = new Box(temp_width, temp_height, temp_x_pos - (margin * 10), temp_y_pos + (margin * 2));
+            info_box.draw_box();
           }
           else if(temp_x_pos < width/2 && temp_y_pos > height/2)
           {
-            line(temp_x_pos + margin/2, temp_y_pos, temp_x_pos + margin, temp_y_pos);   
+            line(temp_x_pos + margin/2, temp_y_pos, temp_x_pos + margin, temp_y_pos);
+            line(temp_x_pos + margin, temp_y_pos, temp_x_pos + (margin * 2), temp_y_pos - (margin * 2));
+            
+            Box info_box = new Box(temp_width, temp_height, temp_x_pos + (margin * 2), temp_y_pos - (margin * 8));
+            info_box.draw_box();
           }
           else
           {
             line(temp_x_pos - margin/2, temp_y_pos, temp_x_pos - margin, temp_y_pos);
+            line(temp_x_pos - margin, temp_y_pos, temp_x_pos - (margin * 2), temp_y_pos - (margin * 2));
+            
+            Box info_box = new Box(temp_width, temp_height, temp_x_pos - (margin * 10), temp_y_pos - (margin * 8));
+            info_box.draw_box();
           }
       }
     }
