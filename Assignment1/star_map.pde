@@ -44,35 +44,67 @@ void star_map()
 
 void select_star()
 {
-  int margin = 30;
-  float temp_x = 0, temp_y = 0;
+  //The margin is 
+  int margin = 50;
+  float angle = 0;
+  strokeWeight(1.5);
   
   for(int i = 0; i < stars_list.size(); i++)
   {
-    if(mouseX >  (stars_list.get(i).screen_pos.x - margin) 
-        && mouseX <  (stars_list.get(i).screen_pos.x + margin)
-        && mouseY >  (stars_list.get(i).screen_pos.y - margin)
-        && mouseY <  (stars_list.get(i).screen_pos.y + margin))
+    
+    //This if statement allows a star to be hovered over and essentially be selected to find out more
+    //information
+    if(mouseX >  (stars_list.get(i).screen_pos.x - stars_list.get(i).star_size) 
+        && mouseX <  (stars_list.get(i).screen_pos.x + stars_list.get(i).star_size)
+        && mouseY >  (stars_list.get(i).screen_pos.y - stars_list.get(i).star_size)
+        && mouseY <  (stars_list.get(i).screen_pos.y + stars_list.get(i).star_size))
     {
-      temp_x = stars_list.get(i).screen_pos.x;
-      temp_y = stars_list.get(i).screen_pos.y;
+      temp_x_pos = stars_list.get(i).screen_pos.x;
+      temp_y_pos = stars_list.get(i).screen_pos.y;
       
-      println("hi");
-      println("goodbye");
+      temp_star_size = stars_list.get(i).star_size;
+      
       noFill();
-      stroke(100);
+      stroke(150);
       
+      //Slowly drawing the circle as if it is being animated.
       arc(stars_list.get(i).screen_pos.x, stars_list.get(i).screen_pos.y, 
           margin, margin, radians(0), radians(counter));
+          
+      //This increases the angle of the arc as long as the mouse stays hovered over a star.
       counter += 5;
+      
+      if(counter > 360)
+      {
+          if(temp_x_pos < width/2 && temp_y_pos < height/2)
+          {
+             line(temp_x_pos + margin/2, temp_y_pos, temp_x_pos + margin, temp_y_pos);
+          }
+          else if(temp_x_pos > width/2 && temp_y_pos < height/2)
+          {
+            line(temp_x_pos - margin/2, temp_y_pos, temp_x_pos - margin, temp_y_pos);
+          }
+          else if(temp_x_pos < width/2 && temp_y_pos > height/2)
+          {
+            line(temp_x_pos + margin/2, temp_y_pos, temp_x_pos + margin, temp_y_pos);   
+          }
+          else
+          {
+            line(temp_x_pos - margin/2, temp_y_pos, temp_x_pos - margin, temp_y_pos);
+          }
+      }
     }
     
-    if(temp_x != 0 && temp_y != 0 && mouseX <  (temp_x - margin) || mouseX > (temp_x + margin)
-        || mouseY <  (temp_y - margin) || mouseY > (temp_y + margin))
+    //This if statement resets the counter to allow the circle to be drawn again when hovering
+    //over another star
+    if(mouseX <  (temp_x_pos - temp_star_size) || mouseX > (temp_x_pos + temp_star_size)
+        || mouseY <  (temp_y_pos - temp_star_size) || mouseY > (temp_y_pos + temp_star_size))
     {
-      println("test");
       counter = 1;  
     }  
     
   }
+  
+  //Resetting the value of strokeWeight to default for other functions
+  strokeWeight(1);
 }
