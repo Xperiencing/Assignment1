@@ -10,10 +10,9 @@ void load_data()
 
 void star_map()
 { 
-  if(fade_in >= 30)
-  {
-    background(0);
-  }
+
+  background(0);
+  
     
   for(int i = 0; i < stars_list.size(); i++)
   {
@@ -29,8 +28,18 @@ void star_map()
       ellipse(star_x, star_y, 
               (stars_list.get(i).star_size  * (.01 * r)), 
               (stars_list.get(i).star_size * (.01 * r)));
-              
+      
       j++;
+    }
+    
+    //Showing the current location of the ship
+    if(stars_list.get(i).current_location == 1)
+    {
+      stroke(255, 0, (fade_in * 10));
+      line(stars_list.get(i).screen_pos.x - 3, stars_list.get(i).screen_pos.y - 3, 
+            stars_list.get(i).screen_pos.x + 3, stars_list.get(i).screen_pos.y + 3);
+      line(stars_list.get(i).screen_pos.x + 3, stars_list.get(i).screen_pos.y - 3, 
+            stars_list.get(i).screen_pos.x - 3, stars_list.get(i).screen_pos.y + 3);
     }
     
   }
@@ -46,7 +55,6 @@ void select_star()
 {
   //The margin is 
   int margin = 50;
-  float angle = 0;
   strokeWeight(1.5);
   
   for(int i = 0; i < stars_list.size(); i++)
@@ -74,6 +82,12 @@ void select_star()
       //This increases the angle of the arc as long as the mouse stays hovered over a star.
       counter += 5;
       
+      //Checking if the user has clicked on the star to go to the current location of the ship.
+      if(mousePressed && stars_list.get(i).current_location == 1)
+      {
+        menu_check = 3;    
+      }
+      
       if(counter > 360)
       {
           temp_width = 400;
@@ -81,6 +95,7 @@ void select_star()
           
           fill(50);
           textSize(20);
+          textAlign(LEFT);
           
           //Each if statement containes parameters for where the text and info boxes should be positioned.
           if(temp_x_pos < width/2 && temp_y_pos < height/2)
@@ -145,4 +160,9 @@ void select_star()
   
   //Resetting the value of strokeWeight to default for other functions
   strokeWeight(1);
+}
+
+void change_scene()
+{
+    rect(0, 0, width, height);
 }

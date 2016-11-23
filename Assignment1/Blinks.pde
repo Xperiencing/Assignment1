@@ -53,6 +53,7 @@ void blink(float x_pos, float y_pos, int num_blinks, int finish)
       function_check = 0;
       counter = 0;
       j = 0;
+      first_run = 0;
     }
     
   }

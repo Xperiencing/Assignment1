@@ -19,8 +19,7 @@ ArrayList<Star> stars_list = new ArrayList<Star>();
 void setup()
 {
   //Setting up the screen size.
-  //fullScreen();
-  size(1000, 1000);
+  fullScreen();
   background(0);
   stroke(0);
   smooth(8);
@@ -32,16 +31,16 @@ void setup()
 
 void draw()
 {
-  if(menu_check == 3)
+  if(menu_check == 0)
   {
     initialize();
   }
   
-  if(menu_check == 3)
+  if(menu_check == 1)
   {
     if(j > 0)
     {
-      delay(1000);
+      delay(500);
       menu_check = 2;
     }
     
@@ -52,9 +51,35 @@ void draw()
     }
     
   }
-  if(menu_check == 0)
+  
+  if(menu_check == 2)
   {
     star_map();
     select_star();
   }
+  
+  if(menu_check == 3)
+  {
+    if(first_run == 0)
+    {
+      fade_in = 0;
+      first_run++;
+    }
+    
+    stroke(255, 255, 255, fade_in);
+    fill(255, 255, 255, fade_in);
+    strokeWeight(1);
+    
+    change_scene();
+    
+    fade_in++;
+    
+    if(fade_in > 255)
+    {
+      menu_check = 4;
+      first_run = 0;
+    }
+  }
+  
+  
 }
