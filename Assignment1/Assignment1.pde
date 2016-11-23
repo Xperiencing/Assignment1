@@ -31,11 +31,13 @@ void setup()
 
 void draw()
 {
+  //This starts the intialising screen before the interface opens.
   if(menu_check == 0)
   {
     initialize();
   }
   
+  //This is a small delay between the initialising screen and the star map.
   if(menu_check == 1)
   {
     if(j > 0)
@@ -52,34 +54,66 @@ void draw()
     
   }
   
+  //This is the drawing of the star map.
   if(menu_check == 2)
   {
     star_map();
     select_star();
   }
   
+  //This is the screen transitionbetween the star map and the ship.
   if(menu_check == 3)
-  {
-    if(first_run == 0)
+  { 
+    if(function_check == 0)
     {
-      fade_in = 0;
-      first_run++;
+      if(first_run == 0)
+      {
+        fade_in = 0;
+        first_run++;
+      }
+      
+      stroke(255, 255, 255, fade_in);
+      fill(255, 255, 255, fade_in);
+      strokeWeight(1);
+      
+      change_scene();
+      
+      fade_in++;
+      
+      if(fade_in > 255)
+      {
+        function_check = 1;
+        first_run = 0;
+      }
     }
     
-    stroke(255, 255, 255, fade_in);
-    fill(255, 255, 255, fade_in);
-    strokeWeight(1);
-    
-    change_scene();
-    
-    fade_in++;
-    
-    if(fade_in > 255)
+    if(function_check == 0)
     {
-      menu_check = 4;
-      first_run = 0;
+      if(first_run == 1)
+      {
+        fade_in = 255;
+        first_run++;
+      }
+      
+      stroke(255, 255, 255, fade_in);
+      fill(255, 255, 255, fade_in);
+      strokeWeight(1);
+      
+      change_scene();
+      
+      fade_in--;
+      
+      if(fade_in < 0)
+      {
+        menu_check = 4;
+        first_run = 0;
+      }
     }
   }
   
-  
+  //This is the drawing of the ship and its overveiw.
+  if(menu_check == 4)
+  {
+      
+  }
 }

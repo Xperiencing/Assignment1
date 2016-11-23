@@ -85,7 +85,7 @@ void select_star()
       //Checking if the user has clicked on the star to go to the current location of the ship.
       if(mousePressed && stars_list.get(i).current_location == 1)
       {
-        menu_check = 3;    
+        menu_check = 3;
       }
       
       if(counter > 360)
@@ -164,5 +164,5 @@ void select_star()
 
 void change_scene()
 {
-    rect(0, 0, width, height);
+  rect(0, 0, width, height);  
 }
