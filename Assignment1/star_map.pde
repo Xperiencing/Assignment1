@@ -163,6 +163,55 @@ void select_star()
 }
 
 void change_scene()
-{
-  rect(0, 0, width, height);  
+{  
+  if(function_check == 0)
+    {
+      if(first_run == 0)
+      {
+        fade_in = 0;
+        first_run++;
+      }
+      
+      stroke(255, 255, 255, fade_in);
+      fill(255, 255, 255, fade_in);
+      strokeWeight(1);
+      
+      rect(0, 0, width, height); 
+      
+      fade_in++;
+      
+      if(fade_in > 100)
+      {
+        function_check = 1;
+        first_run = 1;
+        spaceship.draw_ship();
+      }
+    }
+    
+    if(function_check == 1)
+    {
+      if(first_run == 1)
+      {
+        fade_in = 255;
+        first_run++;
+      }
+      
+      background(0);
+      
+      stroke(255, 255, 255, fade_in);
+      fill(255, 255, 255, fade_in);
+      strokeWeight(1);
+      rect(0, 0, width, height); 
+      
+      fade_in -= 5;
+      
+      if(fade_in < 0)
+      {
+        menu_check = 4;
+        first_run = 0;
+        j = 0;
+        start_time = millis();
+        background(0);
+      }
+    }
 }

@@ -77,9 +77,9 @@ class Ship
       //This will put a 2 x 3 area of shield generators on the ship
       for(int i = 1; i < 3; i++)
       {
-        for(j = 1; j < 4; j++)
+        for(int r = 1; r < 4; r++)
         {
-          ellipse(start_point_x + (hull_width * j/4), start_point_y + (hull_height * i/3),
+          ellipse(start_point_x + (hull_width * r/4), start_point_y + (hull_height * i/3),
               circle_width, circle_width);
         }
       }
@@ -93,9 +93,9 @@ class Ship
       //This upgrade reinforces the shield generators from the second upgrade.
       for(int i = 1; i < 3; i++)
       {
-        for(j = 1; j < 4; j++)
+        for(int r = 1; r < 4; r++)
         {
-        circle_x_point = start_point_x + (hull_width * j/4);
+        circle_x_point = start_point_x + (hull_width * r/4);
         circle_y_point = start_point_y + (hull_height * i/3);
       
         line(circle_x_point - (circle_width/2), circle_y_point, circle_x_point + (circle_width/2), circle_y_point);
