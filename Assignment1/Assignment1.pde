@@ -18,7 +18,7 @@ PFont mono;
 ArrayList<Star> stars_list = new ArrayList<Star>(); 
 
 //setting up the basic ship model before changes.
-Ship spaceship = new Ship(1, 1, 1);
+Ship spaceship = new Ship(1, 1, 1, 1, 1);
 
 void setup()
 {
@@ -36,13 +36,13 @@ void setup()
 void draw()
 {
   //This starts the intialising screen before the interface opens.
-  if(menu_check == 0)
+  if(menu_check == 6)
   {
     initialize();
   }
   
   //This is a small delay between the initialising screen and the star map.
-  if(menu_check == 1)
+  if(menu_check == 6)
   {
     if(j > 0)
     {
@@ -59,14 +59,14 @@ void draw()
   }
   
   //This is the drawing of the star map.
-  if(menu_check == 2)
+  if(menu_check == 6)
   {
     star_map();
     select_star();
   }
   
   //This is the screen transitionbetween the star map and the ship.
-  if(menu_check == 3)
+  if(menu_check == 0)
   { 
     if(function_check == 0)
     {
@@ -107,7 +107,7 @@ void draw()
       strokeWeight(1);
       change_scene();
       
-      fade_in--;
+      fade_in -= 5;
       
       if(fade_in < 0)
       {
@@ -121,8 +121,8 @@ void draw()
   //This is the drawing of the ship and its overveiw.
   if(menu_check == 4)
   {
-     stroke(50, 50, 50);
-     noFill();
+     background(0);
      spaceship.draw_ship(); 
+     
   }
 }
