@@ -14,7 +14,11 @@ float temp_width = 0, temp_height = 0;
 
 PFont mono;
 
+//The array list containing all information relevant for the star map.
 ArrayList<Star> stars_list = new ArrayList<Star>(); 
+
+//setting up the basic ship model before changes.
+Ship spaceship = new Ship(1, 1, 1);
 
 void setup()
 {
@@ -80,14 +84,15 @@ void draw()
       
       fade_in++;
       
-      if(fade_in > 255)
+      if(fade_in > 100)
       {
         function_check = 1;
-        first_run = 0;
+        first_run = 1;
+        spaceship.draw_ship();
       }
     }
     
-    if(function_check == 0)
+    if(function_check == 1)
     {
       if(first_run == 1)
       {
@@ -95,10 +100,11 @@ void draw()
         first_run++;
       }
       
+      background(0);
+      
       stroke(255, 255, 255, fade_in);
       fill(255, 255, 255, fade_in);
       strokeWeight(1);
-      
       change_scene();
       
       fade_in--;
@@ -107,6 +113,7 @@ void draw()
       {
         menu_check = 4;
         first_run = 0;
+        background(0);
       }
     }
   }
@@ -114,6 +121,8 @@ void draw()
   //This is the drawing of the ship and its overveiw.
   if(menu_check == 4)
   {
-      
+     stroke(50, 50, 50);
+     noFill();
+     spaceship.draw_ship(); 
   }
 }
