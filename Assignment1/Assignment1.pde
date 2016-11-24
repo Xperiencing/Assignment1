@@ -66,7 +66,7 @@ void draw()
   }
   
   //This is the screen transitionbetween the star map and the ship.
-  if(menu_check == 0)
+  if(menu_check == 6)
   { 
     if(function_check == 0)
     {
@@ -119,7 +119,7 @@ void draw()
   }
   
   //This is the drawing of the ship and its overveiw.
-  if(menu_check == 4)
+  if(menu_check == 0)
   {
      background(0);
      spaceship.draw_ship(); 
