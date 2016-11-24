@@ -41,7 +41,9 @@ class Ship
   
   void draw_hull(float start_point_x, float start_point_y, float hull_width, float hull_height)
   {
+    float circle_width = hull_width * 1/8;
     
+    //The basic hull without any upgrade.
     if(hull_type == 1 || hull_type == 2 || hull_type == 3)
     {
       //This is the main hull that the rest of the ship is based on
@@ -69,31 +71,37 @@ class Ship
       
     }
     
+    //The second hull upgrade.
     if(hull_type == 2 || hull_type == 3)
     {        
-      //This is the main hull that the rest of the ship is based on
-      rect(start_point_x, start_point_y, hull_width, hull_height);
-      
-      //This will draw a 2 x 3 area of ellipses on the hull for another hull type.
-      ellipse(start_point_x + (hull_width * 1/4), start_point_y + (hull_height * 1/3),
-              (hull_width * 1/8), (hull_width * 1/8));
-      ellipse(start_point_x + (hull_width * 2/4), start_point_y + (hull_height * 1/3),
-              (hull_width * 1/8), (hull_width * 1/8));
-      ellipse(start_point_x + (hull_width * 3/4), start_point_y + (hull_height * 1/3),
-              (hull_width * 1/8), (hull_width * 1/8));
-              
-      ellipse(start_point_x + (hull_width * 1/4), start_point_y + (hull_height * 2/3),
-              (hull_width * 1/8), (hull_width * 1/8));
-      ellipse(start_point_x + (hull_width * 2/4), start_point_y + (hull_height * 2/3),
-              (hull_width * 1/8), (hull_width * 1/8));
-      ellipse(start_point_x + (hull_width * 3/4), start_point_y + (hull_height * 2/3),
-              (hull_width * 1/8), (hull_width * 1/8));
-
+      //This will put a 2 x 3 area of shield generators on the ship
+      for(int i = 1; i < 3; i++)
+      {
+        for(j = 1; j < 4; j++)
+        {
+          ellipse(start_point_x + (hull_width * j/4), start_point_y + (hull_height * i/3),
+              circle_width, circle_width);
+        }
+      }
     }
     
+    //The third hull upgade.
     if(hull_type == 3)
     {
+      float circle_x_point, circle_y_point;
       
+      //This upgrade reinforces the shield generators from the second upgrade.
+      for(int i = 1; i < 3; i++)
+      {
+        for(j = 1; j < 4; j++)
+        {
+        circle_x_point = start_point_x + (hull_width * j/4);
+        circle_y_point = start_point_y + (hull_height * i/3);
+      
+        line(circle_x_point - (circle_width/2), circle_y_point, circle_x_point + (circle_width/2), circle_y_point);
+        line(circle_x_point, circle_y_point - (circle_width/2), circle_x_point, circle_y_point + (circle_width/2));
+        }
+      }
     }
     
   }
@@ -185,12 +193,41 @@ class Ship
               
         rect(weapon_start_x + (weapon_width * 1/4), weapon_start_y + weapon_height,
               weapon_width * 3, weapon_height * .5);
+              
+        break;
       
       }
       
       case 2:
       {
+        //This Weapon is a machine gun type weapon
+        float weapon_start_x = (start_point_x + (hull_width * 4/5));
+        float weapon_start_y = start_point_y + hull_height;
         
+        float weapon_width = (hull_width * 1/15);
+        float weapon_height = (hull_height * 1/8);
+        
+        //This is the base for the top and bottom weapons
+        rect(weapon_start_x, start_point_y - weapon_height,
+              weapon_width * .5, weapon_height);
+              
+        rect(weapon_start_x, weapon_start_y,
+              weapon_width * .5, weapon_height);
+        
+        //This is the barrel part of the weapon.
+        rect(weapon_start_x - (weapon_width * .5), start_point_y - (weapon_height * 2),
+              weapon_width * 3, weapon_height); 
+              
+        rect(weapon_start_x - (weapon_width * .5), weapon_start_y + weapon_height,
+              weapon_width * 3, weapon_height);
+              
+        //This is muzzle of the cannon.
+        arc(weapon_start_x + (weapon_width * 2.5), start_point_y - (weapon_height * 1.5),
+            weapon_height, weapon_height, radians(-90), HALF_PI);
+            
+        arc(weapon_start_x + (weapon_width * 2.5), weapon_start_y + (weapon_height * 1.5),
+            weapon_height, weapon_height, radians(-90), HALF_PI);
+           
       }
       
       case 3:
