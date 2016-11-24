@@ -29,7 +29,7 @@ class Ship
     draw_hull(start_point_x, start_point_y, hull_width, hull_height);
     draw_cockpit(start_point_x, start_point_y, hull_width, hull_height);
     draw_stabilisers(start_point_x, start_point_y, hull_width, hull_height);
-    draw_weapon();
+    draw_weapon(start_point_x, start_point_y, hull_width, hull_height);
     draw_engine();
   }
   
@@ -138,13 +138,33 @@ class Ship
     }
   }
   
-  void draw_weapon()
+  void draw_weapon(float start_point_x, float start_point_y, float hull_width, float hull_height)
   {
     switch (weapon_type)
     {
       case 1:
       {
+        //This Weapon is a machine gun type weapon
+        float weapon_start_x = (start_point_x + (hull_width * 4/5));
+        float weapon_start_y = start_point_y + hull_height;
         
+        float weapon_width = (hull_width * 1/10);
+        float weapon_height = (hull_height * 1/10);
+        
+        //This is the base for the top and bottom weapons
+        rect(weapon_start_x, start_point_y - weapon_height,
+              weapon_width, weapon_height);
+              
+        rect(weapon_start_x, weapon_start_y,
+              weapon_width, weapon_height);
+        
+        //This is the barrel of both weapons
+        rect(weapon_start_x + (weapon_width * 1/4), start_point_y - (weapon_height * 1.5),
+              weapon_width * 3, weapon_height * .5);
+              
+        rect(weapon_start_x + (weapon_width * 1/4), weapon_start_y + weapon_height,
+              weapon_width * 3, weapon_height * .5);
+      
       }
       
       case 2:
