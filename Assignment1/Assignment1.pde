@@ -6,11 +6,13 @@
 int start_time, counter = 1;
 int function_check = 0, menu_check = 0;
 int first_run = 0, j = 1, check = 0;
-int fade_in = 0, shooting_star_fade = 0;
+int fade_in = 0;
 
 float temp_x_pos = 0, temp_y_pos = 0;
 float temp_star_size = 0;
 float temp_width = 0, temp_height = 0;
+
+float angle;
 
 PFont mono;
 
@@ -123,6 +125,7 @@ void draw()
   {
      background(0);
      spaceship.draw_ship(); 
+     engine_temp();
      
   }
 }

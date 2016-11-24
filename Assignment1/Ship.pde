@@ -30,7 +30,7 @@ class Ship
     draw_cockpit(start_point_x, start_point_y, hull_width, hull_height);
     draw_stabilisers(start_point_x, start_point_y, hull_width, hull_height);
     draw_weapon(start_point_x, start_point_y, hull_width, hull_height);
-    draw_engine();
+    draw_engine(start_point_x, start_point_y, hull_width, hull_height);
   }
   
   void draw_hull(float start_point_x, float start_point_y, float hull_width, float hull_height)
@@ -41,6 +41,8 @@ class Ship
       {
         stroke(70, 70, 70);
         noFill();
+        strokeWeight(1);
+        
         rect(start_point_x, start_point_y, hull_width, hull_height);
         
         //This is the trimming on the top half of the ship's hull.
@@ -179,12 +181,14 @@ class Ship
     }
   }
   
-  void draw_engine()
+  void draw_engine(float start_point_x, float start_point_y, float hull_width, float hull_height)
   {
     switch (engine_type)
     {
       case 1:
       {
+        rect(start_point_x - (hull_width * 1/8), start_point_y + (hull_height * 1/5),
+              hull_width * 1/8, hull_height * 3/5);
         
       }
       
