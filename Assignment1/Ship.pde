@@ -171,6 +171,11 @@ class Ship
   {
     switch (weapon_type)
     {
+      case 0:
+      {
+        //This is just a case to disable weapons on the ship.
+        break;
+      }
       case 1:
       {
         //This Weapon is a machine gun type weapon
@@ -250,7 +255,21 @@ class Ship
       
       case 2:
       {
+        line(start_point_x, start_point_y,
+              start_point_x - (hull_width * 1/8), start_point_y + (hull_height * 1/5));
         
+        line(start_point_x - (hull_width * 1/8), start_point_y + (hull_height * 1/5),
+              start_point_x - (hull_width * 1/8), start_point_y +  (hull_height * 4/5));
+              
+        line(start_point_x - (hull_width * 1/8), start_point_y +  (hull_height * 4/5),
+              start_point_x, start_point_y + hull_height);
+              
+        for(int i = 1; i < 5; i++)
+        {
+          line(start_point_x - (hull_width * 1/8), start_point_y + (hull_height * i/5),
+            start_point_x, start_point_y + (hull_height * i/5));
+        }
+
       }
       case 3:
       {
