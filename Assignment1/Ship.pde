@@ -17,15 +17,21 @@ class Ship
   
   void draw_ship()
   {
+    stroke(70);
+    noFill();
+    strokeWeight(1);
+    
     float start_point_x, start_point_y;
     float hull_width, hull_height;
     
+    //Specifying the constants for the ship, that will reflect the size of everything.
     hull_width = 400;
     hull_height = 200;
     
     start_point_x = (width/2 - hull_width/2);
     start_point_y = (height/2 - hull_height/2);
     
+    //Calling each seperate function to draw each part of the ship.
     draw_hull(start_point_x, start_point_y, hull_width, hull_height);
     draw_cockpit(start_point_x, start_point_y, hull_width, hull_height);
     draw_stabilisers(start_point_x, start_point_y, hull_width, hull_height);
@@ -35,48 +41,61 @@ class Ship
   
   void draw_hull(float start_point_x, float start_point_y, float hull_width, float hull_height)
   {
-    switch (hull_type)
+    
+    if(hull_type == 1 || hull_type == 2 || hull_type == 3)
     {
-      case 1:
-      {
-        stroke(70, 70, 70);
-        noFill();
-        strokeWeight(1);
-        
-        rect(start_point_x, start_point_y, hull_width, hull_height);
-        
-        //This is the trimming on the top half of the ship's hull.
-        line(start_point_x, start_point_y + (hull_height * (1/4f)), 
-            start_point_x + (hull_width * (1/8f)), start_point_y + (hull_height * (1/8f)));
-            
-        line(start_point_x + (hull_width * (1/8f)), start_point_y + (hull_height * (1/8f)), 
-            start_point_x + (hull_width * (7/8f)), start_point_y + (hull_height * (1/8f)));
-            
-        line(start_point_x + (hull_width * (7/8f)), start_point_y + (hull_height * (1/8f)), 
-            start_point_x + hull_width, start_point_y + (hull_height * (1/4f)));
-        
-        //This is the trimming on the bottom half of the ship's hull.    
-        line(start_point_x, start_point_y + (hull_height * (3/4f)), 
-            start_point_x + (hull_width * (1/8f)), start_point_y + (hull_height * (7/8f)));
-            
-        line(start_point_x + (hull_width * (1/8f)), start_point_y + (hull_height * (7/8f)), 
-            start_point_x + (hull_width * (7/8f)), start_point_y + (hull_height * (7/8f)));
-            
-        line(start_point_x + (hull_width * (7/8f)), start_point_y + (hull_height * (7/8f)), 
-            start_point_x + hull_width, start_point_y + (hull_height * (3/4f)));
-        
-      }
+      //This is the main hull that the rest of the ship is based on
+      rect(start_point_x, start_point_y, hull_width, hull_height);
       
-      case 2:
-      {
-        
-      }
+      //This is the trimming on the top half of the ship's hull.
+      line(start_point_x, start_point_y + (hull_height * (1/4f)), 
+          start_point_x + (hull_width * (1/8f)), start_point_y + (hull_height * (1/8f)));
+          
+      line(start_point_x + (hull_width * (1/8f)), start_point_y + (hull_height * (1/8f)), 
+          start_point_x + (hull_width * (7/8f)), start_point_y + (hull_height * (1/8f)));
+          
+      line(start_point_x + (hull_width * (7/8f)), start_point_y + (hull_height * (1/8f)), 
+          start_point_x + hull_width, start_point_y + (hull_height * (1/4f)));
       
-      case 3:
-      {
-        
-      }
+      //This is the trimming on the bottom half of the ship's hull.    
+      line(start_point_x, start_point_y + (hull_height * (3/4f)), 
+          start_point_x + (hull_width * (1/8f)), start_point_y + (hull_height * (7/8f)));
+          
+      line(start_point_x + (hull_width * (1/8f)), start_point_y + (hull_height * (7/8f)), 
+          start_point_x + (hull_width * (7/8f)), start_point_y + (hull_height * (7/8f)));
+          
+      line(start_point_x + (hull_width * (7/8f)), start_point_y + (hull_height * (7/8f)), 
+          start_point_x + hull_width, start_point_y + (hull_height * (3/4f)));
+      
     }
+    
+    if(hull_type == 2 || hull_type == 3)
+    {        
+      //This is the main hull that the rest of the ship is based on
+      rect(start_point_x, start_point_y, hull_width, hull_height);
+      
+      //This will draw a 2 x 3 area of ellipses on the hull for another hull type.
+      ellipse(start_point_x + (hull_width * 1/4), start_point_y + (hull_height * 1/3),
+              (hull_width * 1/8), (hull_width * 1/8));
+      ellipse(start_point_x + (hull_width * 2/4), start_point_y + (hull_height * 1/3),
+              (hull_width * 1/8), (hull_width * 1/8));
+      ellipse(start_point_x + (hull_width * 3/4), start_point_y + (hull_height * 1/3),
+              (hull_width * 1/8), (hull_width * 1/8));
+              
+      ellipse(start_point_x + (hull_width * 1/4), start_point_y + (hull_height * 2/3),
+              (hull_width * 1/8), (hull_width * 1/8));
+      ellipse(start_point_x + (hull_width * 2/4), start_point_y + (hull_height * 2/3),
+              (hull_width * 1/8), (hull_width * 1/8));
+      ellipse(start_point_x + (hull_width * 3/4), start_point_y + (hull_height * 2/3),
+              (hull_width * 1/8), (hull_width * 1/8));
+
+    }
+    
+    if(hull_type == 3)
+    {
+      
+    }
+    
   }
   
   void draw_cockpit(float start_point_x, float start_point_y, float hull_width, float hull_height)
