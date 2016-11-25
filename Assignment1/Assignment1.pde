@@ -22,7 +22,7 @@ PFont mono;
 ArrayList<Star> stars_list = new ArrayList<Star>(); 
 
 //setting up the basic ship model before changes.
-Ship spaceship = new Ship(1, 1, 1, 0, 2);
+Ship spaceship = new Ship(3, 1, 1, 2, 2);
 
 void setup()
 {
@@ -42,14 +42,14 @@ void draw()
   switch (menu_check)
   {
     //This starts the intialising screen before the interface opens.
-    case 6:
+    case 5:
     {
       initialize();
       break;
     }
     
     //This is a small delay between the initialising screen and the star map.
-    case 7:
+    case 4:
     {
       if(j > 0)
       {
@@ -67,7 +67,7 @@ void draw()
     }
     
     //This is the drawing of the star map.
-    case 8:
+    case 3:
     {
       star_map();
       select_star();
@@ -75,7 +75,7 @@ void draw()
     }
     
     //This is the screen transitionbetween the star map and the ship.
-    case 3:
+    case 2:
     { 
       change_scene();
       break;
@@ -84,11 +84,14 @@ void draw()
     //This is the drawing of the ship and its overveiw.
     case 0:
     {
-       background(0);
-       spaceship.draw_ship(); 
-       engine_temp();
+      float distance;
+      
+      background(0);
+      spaceship.draw_ship(); 
+      distance = engine_temp();
+      water_coolant(distance);
        
-       break;
+      break;
     }
   }
 }
