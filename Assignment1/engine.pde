@@ -84,10 +84,12 @@ void water_coolant(float horizontal_spacing)
         
   line(width - (horizontal_spacing * 1.5), height - vertical_spacing * 2,
        width - (horizontal_spacing * 2.5), height - vertical_spacing * 2);
-        
+  
+  //This is the right hand side of the water guage.
   arc(width - (horizontal_spacing * 1.5), height - vertical_spacing * 1.5,
       horizontal_spacing * 1/8, vertical_spacing, radians(-90), HALF_PI);
       
+  //This is the left hand side of the water guage.   
   arc(width - (horizontal_spacing * 2.5), height - vertical_spacing * 1.5,
       horizontal_spacing * 1/8, vertical_spacing, HALF_PI, PI + HALF_PI);
 }

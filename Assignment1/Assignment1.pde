@@ -22,7 +22,7 @@ PFont mono;
 ArrayList<Star> stars_list = new ArrayList<Star>(); 
 
 //setting up the basic ship model before changes.
-Ship spaceship = new Ship(3, 1, 1, 2, 2);
+Ship spaceship = new Ship(1, 1, 1, 0, 1);
 
 void setup()
 {

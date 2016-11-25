@@ -244,39 +244,48 @@ class Ship
   
   void draw_engine(float start_point_x, float start_point_y, float hull_width, float hull_height)
   {
-    switch (engine_type)
+    //This is the starting engine.
+    if(engine_type == 1)
     {
-      case 1:
-      {
-        rect(start_point_x - (hull_width * 1/8), start_point_y + (hull_height * 1/5),
-              hull_width * 1/8, hull_height * 3/5);
-        
-      }
+      rect(start_point_x - (hull_width * 1/8), start_point_y + (hull_height * 1/5),
+            hull_width * 1/8, hull_height * 3/5);
       
-      case 2:
-      {
-        line(start_point_x, start_point_y,
-              start_point_x - (hull_width * 1/8), start_point_y + (hull_height * 1/5));
-        
-        line(start_point_x - (hull_width * 1/8), start_point_y + (hull_height * 1/5),
-              start_point_x - (hull_width * 1/8), start_point_y +  (hull_height * 4/5));
-              
-        line(start_point_x - (hull_width * 1/8), start_point_y +  (hull_height * 4/5),
-              start_point_x, start_point_y + hull_height);
-              
-        for(int i = 1; i < 5; i++)
-        {
-          line(start_point_x - (hull_width * 1/8), start_point_y + (hull_height * i/5),
-            start_point_x, start_point_y + (hull_height * i/5));
-        }
-
-      }
-      
-      case 3:
-      {
-          
-      }
     }
+    
+    //This is the second upgrade for the engine.
+    if(engine_type == 2 || engine_type == 3)
+    {
+      line(start_point_x, start_point_y,
+            start_point_x - (hull_width * 1/8), start_point_y + (hull_height * 1/5));
+      
+      line(start_point_x - (hull_width * 1/8), start_point_y + (hull_height * 1/5),
+            start_point_x - (hull_width * 1/8), start_point_y +  (hull_height * 4/5));
+            
+      line(start_point_x - (hull_width * 1/8), start_point_y +  (hull_height * 4/5),
+            start_point_x, start_point_y + hull_height);
+            
+      for(int i = 1; i < 5; i++)
+      {
+        line(start_point_x - (hull_width * 1/8), start_point_y + (hull_height * i/5),
+          start_point_x, start_point_y + (hull_height * i/5));
+      }
+
+    }
+    
+    //This is the third upgrade for the engine
+    if(engine_type == 3)
+    {
+       line(start_point_x - (hull_width * 1/8), start_point_y + (hull_height * 1/5),
+            start_point_x - (hull_width * 1/5), start_point_y);
+            
+       line(start_point_x - (hull_width * 1/5), start_point_y,
+             start_point_x - (hull_width * 1/5), start_point_y + hull_height);
+       
+       line(start_point_x - (hull_width * 1/5), start_point_y + hull_height,
+             start_point_x - (hull_width * 1/8), start_point_y + (hull_height * 4/5));
+       
+    }
+
   }
 }  
     
