@@ -19,7 +19,7 @@ class Box
   //This function simply draws the box on-screen.
   void draw_box()
   {
-      rect(box_pos_x, box_pos_y, box_width, box_height, 5);
+      rect(box_width, box_height, box_pos_x, box_pos_y, 5);
   }
   
   //This function is for storing the info that will be printed in each of the info boxes.
