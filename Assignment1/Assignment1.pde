@@ -30,6 +30,8 @@ String [] button_names = {"Test Weapon",
                             "Upgrade Ship",
                             "Resource Monitor",
                             };
+                            
+float [] button_menu_size = {(height/6), (height/4), (height/5), (height/5)}; 
 
 void setup()
 {
@@ -97,6 +99,7 @@ void draw()
       spaceship.draw_ship(); 
       distance = engine_temp();
       water_coolant(distance);
+      control_panel();
        
       break;
     }

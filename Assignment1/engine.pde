@@ -27,7 +27,7 @@ float engine_temp()
   //j is the variable that controls how much the colour changes based on the temperature.
   j = 6;
   strokeWeight(3);
-  stroke(255);
+  stroke(100);
   
   for(angle = radians(180); angle <= radians(270); angle += radians(2))
   {
@@ -39,7 +39,7 @@ float engine_temp()
     }
     else
     {
-      stroke(255);  
+      stroke(100);  
     }
     
     //This will find the points in an arc at the bottom left corner of the screen
@@ -76,7 +76,7 @@ void water_coolant(float horizontal_spacing)
   rect(width - (horizontal_spacing * 2.5), height - (vertical_spacing * 2),
         horizontal_spacing, vertical_spacing);
   
-  stroke(255);
+  stroke(100);
   
   //This is the outline of the water guage.
   line(width - (horizontal_spacing * 1.5), height - vertical_spacing,

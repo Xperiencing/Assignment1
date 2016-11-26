@@ -15,5 +15,19 @@ class Button
       button_height = but_height;
   }
   
+  void draw_button()
+  {
+    stroke(100);
+    fill(20);
+    strokeWeight(1);
+    
+    rect(button_x_pos, button_y_pos, button_width, button_height, 5);
+    
+    fill(100);
+    textAlign(CENTER);
+    textSize(18);
+    text(button_name, button_x_pos + (button_width/2), button_y_pos + (button_height/2));
+  }
+  
   
 }
