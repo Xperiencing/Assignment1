@@ -31,7 +31,7 @@ String [] button_names = {"Test Weapon",
                             "Resource Monitor",
                             };
                             
-float [] button_menu_size = {(height/6), (height/4), (height/5), (height/5)}; 
+float [] button_menu_size = {(height/6), (height/4), (height/5), (height/5), 5}; 
 
 void setup()
 {
