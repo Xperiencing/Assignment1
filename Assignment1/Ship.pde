@@ -28,8 +28,16 @@ class Ship
     hull_width = 400;
     hull_height = 200;
     
-    start_point_x = (width/2 - hull_width/2);
-    start_point_y = (height/2 - hull_height/2);
+    if(hide_UI == 0)
+    {
+      start_point_x = (width/2 - hull_width/2);
+      start_point_y = (height/2 - hull_height/2);
+    }
+    else
+    {
+      start_point_x = (width/4 - hull_width/2);
+      start_point_y = (height/2 - hull_height/2);
+    }
     
     //Calling each seperate function to draw each part of the ship.
     draw_hull(start_point_x, start_point_y, hull_width, hull_height);

@@ -87,16 +87,22 @@ class Button
     
     fill(20);
     stroke(150);
-    ellipse(menu_x_pos + (menu_width * 1/4), (menu_y_pos + menu_height/2),
-            menu_height/2, menu_height/2);
-    
-    ellipse(menu_x_pos + (menu_width * 3/4), (menu_y_pos + menu_height/2),
-            menu_height/2, menu_height/2);
+    ellipse(menu_x_pos + menu_width/2, (menu_y_pos + menu_height/2),
+            menu_height * 3/4, menu_height * 3/4);
     
     fill(150);
     textAlign(CENTER);
-    text("LEFT", menu_x_pos + (menu_width * 1/4), (menu_y_pos + menu_height/2) + spacing);
-    text("RIGHT", menu_x_pos + (menu_width * 3/4), (menu_y_pos + menu_height/2) + spacing);
+    text("FIRE", menu_x_pos + (menu_width/2), (menu_y_pos + menu_height/2) + spacing);
+    
+     if(mousePressed == true && 
+          (mouseY >= (menu_y_pos + (menu_height * 1/6))) && 
+          (mouseY <= (menu_y_pos + (menu_height * 5/6))) && 
+          (mouseX >= (menu_x_pos + menu_width/2) - (menu_height/2)) && 
+          (mouseX <= (menu_x_pos + menu_width/2) + (menu_height/2)))
+     {
+       hide_UI = 1;
+       move_ship = 1;
+     }
   }
   
   void crew_status(float menu_x_pos, float menu_y_pos, float menu_width, float menu_height)

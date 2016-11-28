@@ -16,6 +16,10 @@ float angle;
 
 float engine_temperature = 200;
 
+//These variables are used in the ship overveiw.
+int hide_UI = 0, move_ship = 0;
+
+//Initialising a new font variable.
 PFont mono;
 
 //The array list containing all information relevant for the star map.
@@ -39,6 +43,7 @@ void setup()
 {
   //Setting up the screen size.
   fullScreen();
+  //size(1000, 1000);
   background(0);
   stroke(0);
   smooth(8);
@@ -105,10 +110,24 @@ void draw()
       float distance;
       
       background(0);
-      spaceship.draw_ship(); 
-      distance = engine_temp();
-      water_coolant(distance);
-      control_panel();
+      
+      if(hide_UI == 0)
+      {         
+        distance = engine_temp();
+        water_coolant(distance);
+        control_panel();
+      }
+      
+      spaceship.draw_ship();
+      
+      if(keyPressed)
+      {
+        if(key == 32)
+        {
+          hide_UI = 0;
+          move_ship = 0;
+        }
+      }
        
       break;
     }
