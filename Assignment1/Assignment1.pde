@@ -30,8 +30,10 @@ String [] button_names = {"Test Weapon",
                             "Upgrade Ship",
                             "Resource Monitor",
                             };
-                            
-float [] button_menu_size = {(height/6), (height/4), (height/5), (height/5), 5}; 
+
+//The array needs to be first initalised with 5 numbers, as height and width cannot be used before they are 
+//declared in setup.
+float [] button_menu_size = {1, 1, 1, 1, 5}; 
 
 void setup()
 {
@@ -44,6 +46,13 @@ void setup()
   mono = createFont("american-typewriter.ttf", 32);
   
   load_data();
+  
+  //This sets the first four elements in the array to the appropriate size for the menu, for the respective button.
+  button_menu_size[0] = (height/5);
+  button_menu_size[1] = (height/2);
+  button_menu_size[2] = (height/2);
+  button_menu_size[3] = (height/2);
+
 }
 
 void draw()

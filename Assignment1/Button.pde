@@ -19,10 +19,12 @@ class Button
   
   void draw_button()
   {
+    //Setting the parameters for the outline of the button.
     stroke(100);
     fill(20);
     strokeWeight(1);
     
+    //This prints the button in its default position.
     if(function_check < index)
     {
       rect(button_x_pos, button_y_pos + button_menu_size[function_check], button_width, button_height, 5);
@@ -32,10 +34,12 @@ class Button
       rect(button_x_pos, button_y_pos, button_width, button_height, 5);
     }
     
+    //Setting the text parameters for the button.
     fill(100);
     textAlign(CENTER);
     textSize(18);
     
+    //This prints the button in a new position based on any menu displayed above it.
     if(function_check < index)
     {
       text(button_name, button_x_pos + (button_width/2), (button_y_pos + (button_height/2)) + button_menu_size[function_check]);

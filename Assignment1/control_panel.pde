@@ -13,11 +13,27 @@ void control_panel()
     ship_button.draw_button();
     
     //This is an if statement to check if one of the buttons have been pressed.
-    if(mousePressed == true && 
-        (mouseY >= button_y_pos && mouseY <= (button_y_pos + button_height)) && 
-        (mouseY >= spacing && mouseY <= (spacing + button_width)))
+    //If the button has not been moved because of a menu the if statement is entered, 
+    //otherwise the else statement is entered.
+    if(function_check > i)
     {
-      function_check = i;  
+      if(mousePressed == true && 
+          (mouseY >= button_y_pos && mouseY <= (button_y_pos + button_height)) && 
+          (mouseX >= spacing && mouseX <= (spacing + button_width)))
+      {
+        function_check = i;  
+      }
+    }
+    
+    else
+    {
+      if(mousePressed == true && 
+          (mouseY >= button_y_pos + button_menu_size[function_check]) &&
+          (mouseY <= (button_y_pos + button_height) + button_menu_size[function_check]) && 
+          (mouseX >= spacing && mouseX <= (spacing + button_width)))
+      {
+        function_check = i;  
+      }
     }
   }
 }
