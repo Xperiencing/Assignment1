@@ -19,6 +19,9 @@ class Button
   
   void draw_button()
   {
+    int spacing = 5;
+    float menu_x_pos, menu_y_pos;
+    
     //Setting the parameters for the outline of the button.
     stroke(100);
     fill(20);
@@ -28,10 +31,14 @@ class Button
     if(function_check < index)
     {
       rect(button_x_pos, button_y_pos + button_menu_size[function_check], button_width, button_height, 5);
+      menu_x_pos = button_x_pos;
+      menu_y_pos = (button_y_pos + button_menu_size[function_check]) + (button_height + spacing);
     }
     else
     {
       rect(button_x_pos, button_y_pos, button_width, button_height, 5);
+      menu_x_pos = button_x_pos;
+      menu_y_pos = button_y_pos + (button_height + spacing);
     }
     
     //Setting the text parameters for the button.
@@ -48,7 +55,47 @@ class Button
     {
       text(button_name, button_x_pos + (button_width/2), button_y_pos + (button_height/2));
     }
+    
+    if(index == 0)
+    {
+      test_weapon(menu_x_pos, menu_y_pos);
+    }
+    
+    if(index == 1)
+    {
+      crew_status(menu_x_pos, menu_y_pos);
+    }
+    
+    if(index == 2)
+    {
+      upgrade_ship(menu_x_pos, menu_y_pos);
+    }
+    
+    if(index == 3)
+    {
+      resource_monitor(menu_x_pos, menu_y_pos);
+    }
+    
   }
   
+  void test_weapon(float menu_x_pos, float menu_y_pos)
+  {
+    
+  }
+  
+  void crew_status(float menu_x_pos, float menu_y_pos)
+  {
+    
+  }
+  
+  void upgrade_ship(float menu_x_pos, float menu_y_pos)
+  {
+    
+  }
+  
+  void resource_monitor(float menu_x_pos, float menu_y_pos)
+  {
+    
+  }
   
 }

@@ -33,7 +33,7 @@ String [] button_names = {"Test Weapon",
 
 //The array needs to be first initalised with 5 numbers, as height and width cannot be used before they are 
 //declared in setup.
-float [] button_menu_size = {1, 1, 1, 1, 5}; 
+float [] button_menu_size = {1, 1, 1, 1, 0}; 
 
 void setup()
 {
