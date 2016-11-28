@@ -17,7 +17,7 @@ class Ship
   
   void draw_ship()
   {
-    stroke(100);
+    stroke(150);
     noFill();
     strokeWeight(1);
     

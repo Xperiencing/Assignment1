@@ -27,7 +27,7 @@ float engine_temp()
   //j is the variable that controls how much the colour changes based on the temperature.
   j = 6;
   strokeWeight(3);
-  stroke(100);
+  stroke(150);
   
   for(angle = radians(180); angle <= radians(270); angle += radians(2))
   {
@@ -39,7 +39,7 @@ float engine_temp()
     }
     else
     {
-      stroke(100);  
+      stroke(150);  
     }
     
     //This will find the points in an arc at the bottom left corner of the screen

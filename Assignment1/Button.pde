@@ -21,9 +21,10 @@ class Button
   {
     int spacing = 5;
     float menu_x_pos, menu_y_pos;
+    float menu_width = width/5, menu_height = button_menu_size[function_check];
     
     //Setting the parameters for the outline of the button.
-    stroke(100);
+    stroke(150);
     fill(20);
     strokeWeight(1);
     
@@ -42,7 +43,7 @@ class Button
     }
     
     //Setting the text parameters for the button.
-    fill(100);
+    fill(150);
     textAlign(CENTER);
     textSize(18);
     
@@ -56,46 +57,61 @@ class Button
       text(button_name, button_x_pos + (button_width/2), button_y_pos + (button_height/2));
     }
     
-    if(index == 0)
+    if(function_check == index && index == 0)
     {
-      test_weapon(menu_x_pos, menu_y_pos);
+      test_weapon(menu_x_pos, menu_y_pos, menu_width, menu_height);
     }
     
-    if(index == 1)
+    if(function_check == index && index == 1)
     {
-      crew_status(menu_x_pos, menu_y_pos);
+      crew_status(menu_x_pos, menu_y_pos, menu_width, menu_height);
     }
     
-    if(index == 2)
+    if(function_check == index && index == 2)
     {
-      upgrade_ship(menu_x_pos, menu_y_pos);
+      upgrade_ship(menu_x_pos, menu_y_pos, menu_width, menu_height);
     }
     
-    if(index == 3)
+    if(function_check == index && index == 3)
     {
-      resource_monitor(menu_x_pos, menu_y_pos);
+      resource_monitor(menu_x_pos, menu_y_pos, menu_width, menu_height);
     }
     
   }
   
-  void test_weapon(float menu_x_pos, float menu_y_pos)
-  {
+  void test_weapon(float menu_x_pos, float menu_y_pos, float menu_width, float menu_height)
+  { 
+    int spacing = 5;
     
+    rect(menu_x_pos, menu_y_pos, menu_width, menu_height, 5);
+    
+    fill(20);
+    stroke(150);
+    ellipse(menu_x_pos + (menu_width * 1/4), (menu_y_pos + menu_height/2),
+            menu_height/2, menu_height/2);
+    
+    ellipse(menu_x_pos + (menu_width * 3/4), (menu_y_pos + menu_height/2),
+            menu_height/2, menu_height/2);
+    
+    fill(150);
+    textAlign(CENTER);
+    text("LEFT", menu_x_pos + (menu_width * 1/4), (menu_y_pos + menu_height/2) + spacing);
+    text("RIGHT", menu_x_pos + (menu_width * 3/4), (menu_y_pos + menu_height/2) + spacing);
   }
   
-  void crew_status(float menu_x_pos, float menu_y_pos)
+  void crew_status(float menu_x_pos, float menu_y_pos, float menu_width, float menu_height)
   {
-    
+    rect(menu_x_pos, menu_y_pos, menu_width, menu_height, 5);
   }
   
-  void upgrade_ship(float menu_x_pos, float menu_y_pos)
+  void upgrade_ship(float menu_x_pos, float menu_y_pos, float menu_width, float menu_height)
   {
-    
+    rect(menu_x_pos, menu_y_pos, menu_width, menu_height, 5);
   }
   
-  void resource_monitor(float menu_x_pos, float menu_y_pos)
+  void resource_monitor(float menu_x_pos, float menu_y_pos, float menu_width, float menu_height)
   {
-    
+    rect(menu_x_pos, menu_y_pos, menu_width, menu_height, 5);
   }
   
 }
