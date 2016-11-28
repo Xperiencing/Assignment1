@@ -71,7 +71,7 @@ class Ship
       
     }
     
-    //The second hull upgrade.
+    //The first hull upgrade.
     if(hull_type == 2 || hull_type == 3)
     {        
       //This will put a 2 x 3 area of shield generators on the ship
@@ -85,12 +85,12 @@ class Ship
       }
     }
     
-    //The third hull upgade.
+    //The second hull upgade.
     if(hull_type == 3)
     {
       float circle_x_point, circle_y_point;
       
-      //This upgrade reinforces the shield generators from the second upgrade.
+      //This upgrade reinforces the shield generators from the first upgrade.
       for(int i = 1; i < 3; i++)
       {
         for(int r = 1; r < 4; r++)
@@ -108,29 +108,44 @@ class Ship
   
   void draw_cockpit(float start_point_x, float start_point_y, float hull_width, float hull_height)
   {
-    switch (cockpit_type)
-    {
-      case 1:
+
+      if(cockpit_type == 1)
       {
-        //This hull type is of a conical type.
+        //This is the default hull type
         arc((start_point_x + hull_width), (start_point_y + (hull_height/2.0)), 
             (hull_width * 1/4), (hull_height/2.0), -radians(90), (HALF_PI));
         
         arc((start_point_x + hull_width), (start_point_y + (hull_height/2.0)), 
             (hull_width * 3/4), hull_height, -radians(90), (HALF_PI)); 
-
       }
       
-      case 2:
+      if(cockpit_type == 2 || cockpit_type == 3)
       {
+        //This is the first upgrade to the ship from the default.
+        line((start_point_x + hull_width), (start_point_y + (hull_height * 1/4)),
+              (start_point_x + (hull_width * 6/5)), (start_point_y + (hull_height * 2/5)));
         
+        line((start_point_x + (hull_width * 6/5)), (start_point_y + (hull_height * 2/5)),
+              (start_point_x + (hull_width * 6/5)), (start_point_y + (hull_height * 3/5)));
+              
+        line((start_point_x + (hull_width * 6/5)), (start_point_y + (hull_height * 3/5)),
+              (start_point_x + hull_width), (start_point_y + (hull_height * 3/4)));
+        
+        arc((start_point_x + hull_width), (start_point_y + (hull_height/2.0)), 
+            (hull_width * 3/4), hull_height, -radians(90), (HALF_PI)); 
       }
       
-      case 3:
+      if(cockpit_type == 3)
       {
-        
+        //This is the second upgrade to the cockpit, adding more reinforcement and a shield generator
+        //Similar to second hull upgrade.
+        ellipse((start_point_x + (hull_width * 9/8)), (start_point_y + hull_height/2),
+                  hull_height/5, hull_height/5);
+                 
+        line(start_point_x + hull_width, start_point_y + hull_height/2,
+              (start_point_x + (hull_width + (hull_height * 3/4))), start_point_y + hull_height/2);
       }
-    }
+    
   }
   
   void draw_stabilisers(float start_point_x, float start_point_y, float hull_width, float hull_height)
