@@ -62,34 +62,3 @@ float engine_temp()
   
   return outer_radius;
 }
-
-void water_coolant(float horizontal_spacing)
-{
-  //Setting the coulour of the water guage.
-  stroke(0, 0, 150);
-  fill(0, 0, 150);
-  strokeWeight(1);
-  
-  float vertical_spacing = height/20;
-  
-  //This rect allows for the centre of the water coolant guage to be blue.
-  rect(width - (horizontal_spacing * 2.5), height - (vertical_spacing * 2),
-        horizontal_spacing, vertical_spacing);
-  
-  stroke(100);
-  
-  //This is the outline of the water guage.
-  line(width - (horizontal_spacing * 1.5), height - vertical_spacing,
-       width - (horizontal_spacing * 2.5), height - vertical_spacing);
-        
-  line(width - (horizontal_spacing * 1.5), height - vertical_spacing * 2,
-       width - (horizontal_spacing * 2.5), height - vertical_spacing * 2);
-  
-  //This is the right hand side of the water guage.
-  arc(width - (horizontal_spacing * 1.5), height - vertical_spacing * 1.5,
-      horizontal_spacing * 1/8, vertical_spacing, radians(-90), HALF_PI);
-      
-  //This is the left hand side of the water guage.   
-  arc(width - (horizontal_spacing * 2.5), height - vertical_spacing * 1.5,
-      horizontal_spacing * 1/8, vertical_spacing, HALF_PI, PI + HALF_PI);
-}
