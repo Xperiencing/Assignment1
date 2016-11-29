@@ -1,3 +1,5 @@
+# OOP Assignment 29/11/16
+## Patrick Malone, C15398146
 
 **Scenario**
 The UI is based the following. It is hundreds of years into the future and mankind has been able to traverse 
