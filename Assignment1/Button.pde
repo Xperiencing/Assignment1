@@ -163,20 +163,29 @@ class Button
       textAlign(LEFT, TOP);
       fill(20);
       text(ship_parts[i], menu_x_pos + horizontal_spacing, menu_y_pos + (i  * vertical_spacing));
-      
-      rect(menu_x_pos + menu_width/2, menu_y_pos + (i  * vertical_spacing), menu_width/2 - horizontal_spacing, vertical_spacing/3, 5);
-      
-      textAlign(CENTER, TOP);
-      fill(150);
+
       String upgrade = ship_parts[i] + s;
       
       //Printing out a slightly different piece of text for the weapon button.
       if(ship_parts[i] == "Weapon")
       {
-        text("Change Weapon", (menu_x_pos + menu_width/2) + ((menu_width/2 - horizontal_spacing)/2), menu_y_pos + (i  * vertical_spacing)); 
+        if(weapon_status != 0)
+        {
+          fill(20);
+          rect(menu_x_pos + menu_width/2, menu_y_pos + (i  * vertical_spacing), menu_width/2 - horizontal_spacing, vertical_spacing/3, 5);
+          
+          textAlign(CENTER, TOP);
+          fill(150);
+          text("Change Weapon", (menu_x_pos + menu_width/2) + ((menu_width/2 - horizontal_spacing)/2), menu_y_pos + (i  * vertical_spacing)); 
+        }
       }
       else
       {
+        fill(20);
+        rect(menu_x_pos + menu_width/2, menu_y_pos + (i  * vertical_spacing), menu_width/2 - horizontal_spacing, vertical_spacing/3, 5);
+        
+        textAlign(CENTER, TOP);
+        fill(150);
         text(upgrade, (menu_x_pos + menu_width/2) + ((menu_width/2 - horizontal_spacing)/2), menu_y_pos + (i  * vertical_spacing)); 
       }
       
@@ -186,11 +195,23 @@ class Button
           (mouseX >= (menu_x_pos + menu_width/2)) && 
           (mouseX <= (menu_width - horizontal_spacing)))
       {
-        if(ship_upgrades[i] < 3)
+        if(ship_upgrades[i] < 3 && ship_parts[i] != "Weapons")
         {
           ship_upgrades[i]++;
+          delay(100);
         }
-        delay(100);
+        
+        if(ship_upgrades[i] == 1 && ship_parts[i] == "Weapons")
+        {
+          ship_upgrades[i] = 2;
+          delay(100);
+        }
+        
+        if(ship_upgrades[i] == 2 && ship_parts[i] == "Weapons")
+        {
+          ship_upgrades[i] = 1;
+          delay(100);
+        }
       }
     }
     
@@ -207,6 +228,24 @@ class Button
     else
     {
       text("Disable Weapons", menu_x_pos + menu_width/2, menu_y_pos + (menu_height * 7/8));
+    }
+    
+    if(mousePressed == true &&
+          (mouseY >= (menu_y_pos + (menu_height * 7/8))) && 
+          (mouseY <= (menu_y_pos + (menu_height * 7/8)) + vertical_spacing/3) && 
+          (mouseX >= menu_x_pos + (menu_width * 1/4)) && 
+          (mouseX <= menu_x_pos + (menu_width * 3/4)))
+    {
+      if (weapon_status == 0)
+      {
+        ship_upgrades[3] = 1;
+        delay(100);
+      } 
+      else
+      {
+        ship_upgrades[3] = 0;
+        delay(100);
+      }
     }
   }
   
