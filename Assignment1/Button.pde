@@ -169,7 +169,29 @@ class Button
       textAlign(CENTER, TOP);
       fill(150);
       String upgrade = ship_parts[i] + s;
-      text(upgrade, (menu_x_pos + menu_width/2) + ((menu_width/2 - horizontal_spacing)/2), menu_y_pos + (i  * vertical_spacing)); 
+      
+      //Printing out a slightly different piece of text for the weapon button.
+      if(ship_parts[i] == "Weapon")
+      {
+        text("Change Weapon", (menu_x_pos + menu_width/2) + ((menu_width/2 - horizontal_spacing)/2), menu_y_pos + (i  * vertical_spacing)); 
+      }
+      else
+      {
+        text(upgrade, (menu_x_pos + menu_width/2) + ((menu_width/2 - horizontal_spacing)/2), menu_y_pos + (i  * vertical_spacing)); 
+      }
+      
+      if(mousePressed == true &&
+          (mouseY >= (menu_y_pos + (i  * vertical_spacing))) && 
+          (mouseY <= (menu_y_pos + (i  * vertical_spacing)) + vertical_spacing/3) && 
+          (mouseX >= (menu_x_pos + menu_width/2)) && 
+          (mouseX <= (menu_width - horizontal_spacing)))
+      {
+        if(ship_upgrades[i] < 3)
+        {
+          ship_upgrades[i]++;
+        }
+        delay(100);
+      }
     }
     
     //This final button is used to enable/disable the weapons on board the ship.

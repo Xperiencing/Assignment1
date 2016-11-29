@@ -31,9 +31,6 @@ PFont mono;
 //The array list containing all information relevant for the star map.
 ArrayList<Star> stars_list = new ArrayList<Star>(); 
 
-//setting up the basic ship model before changes.
-Ship spaceship = new Ship(1, 1, 1, 1, 1);
-
 //The array of strings containing all of the names of the buttons in the ship screen.
 String [] button_names = {"Test Weapon",
                             "Crew Status",
@@ -49,7 +46,7 @@ String [] crew_members = {"John Doe",
                            "Sarah jeans"
                          };
 
-float [] mental_status = {1, 0, 1, 1, 1};
+float [] mental_status = {1, 1, 1, 1, 1};
 
 String [] ship_parts = {"Hull",
                          "Cockpit",
@@ -57,6 +54,11 @@ String [] ship_parts = {"Hull",
                          "Weapon",
                          "Engine"
                        };
+
+int [] ship_upgrades = {1, 1, 1, 0, 1};
+
+//setting up the basic ship model before changes.
+Ship spaceship = new Ship(ship_upgrades[0], ship_upgrades[1], ship_upgrades[2], ship_upgrades[3], ship_upgrades[4]);
 
 //The array needs to be first initalised with 5 numbers, as height and width cannot be used before they are 
 //declared in setup.
@@ -130,17 +132,15 @@ void draw()
     //This is the drawing of the ship and its overveiw.
     case 0:
     {
-      float distance;
-      
       background(0);
       
       if(hide_UI == 0)
       {         
-        distance = engine_temp();
-        water_coolant(distance);
+        engine_temp();
         control_panel();
       }
       
+      Ship spaceship = new Ship(ship_upgrades[0], ship_upgrades[1], ship_upgrades[2], ship_upgrades[3], ship_upgrades[4]);
       spaceship.draw_ship();
       
       if(keyPressed)
