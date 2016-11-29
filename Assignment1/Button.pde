@@ -258,9 +258,30 @@ class Button
   
   void resource_monitor(float menu_x_pos, float menu_y_pos, float menu_width, float menu_height)
   {
+    //Setting out the spacing between the different aspects of this menu.
+    float vertical_spacing = menu_height/10;
+    float horizontal_spacing = 5;
+    
+    //Creating the menu outline.
     rect(menu_x_pos, menu_y_pos, menu_width, menu_height, 5);
     
+    //Setting the colour of fill and aligning the text
+    textAlign(CENTER, TOP);
+    fill(20);
     
+    //This for loop will print out the list of resources and the quantity of each resource.
+    for(int i = 0; i < resources.length; i++)
+    {
+      text(resources[i], menu_x_pos + (menu_width * 1/4), menu_y_pos + (vertical_spacing * (i + 1)));
+      text('=', menu_x_pos + (menu_width/2), menu_y_pos + (vertical_spacing * (i + 1)));
+      text(resource_stock[i], menu_x_pos + (menu_width * 3/4), menu_y_pos + (vertical_spacing * (i + 1)));
+    }
+    
+    //Adding the button that will be used to gather resources for the ship.
+    rect(menu_x_pos + (menu_width * 1/4), (menu_y_pos + (vertical_spacing * 7)), menu_width/2, vertical_spacing/2, 5);
+    
+    fill(150);
+    text("Gather Resources", menu_width/2, menu_y_pos + (vertical_spacing * 7));
   }
   
 }
