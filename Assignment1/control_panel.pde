@@ -12,6 +12,11 @@ void control_panel()
     Button ship_button = new Button(button_names[i], spacing, button_y_pos, button_width, button_height, i);
     ship_button.draw_button();
     
+    if(start_time + (1000 * (20 - cooldown)) < millis())
+    {
+      cooldown--;
+    }
+    
     //This is an if statement to check if one of the buttons have been pressed.
     //If the button has not been moved because of a menu the if statement is entered, 
     //otherwise the else statement is entered.

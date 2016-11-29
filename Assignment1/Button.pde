@@ -200,9 +200,10 @@ class Button
           (mouseX >= (menu_x_pos + menu_width/2)) && 
           (mouseX <= (menu_width - horizontal_spacing)))
       {
-        if(ship_upgrades[i] < 3 && ship_parts[i] != "Weapon")
+        if(ship_upgrades[i] < 3 && ship_parts[i] != "Weapon" && resource_stock[3] > 200)
         {
           ship_upgrades[i]++;
+          resource_stock[3] -= 200;
           delay(150);
         }
         
@@ -264,7 +265,6 @@ class Button
   {
     //Setting out the spacing between the different aspects of this menu.
     float vertical_spacing = menu_height/10;
-    float horizontal_spacing = 5;
     
     //Creating the menu outline.
     rect(menu_x_pos, menu_y_pos, menu_width, menu_height, 5);
@@ -286,6 +286,36 @@ class Button
     
     fill(150);
     text("Gather Resources", menu_width/2, menu_y_pos + (vertical_spacing * 7));
+    
+    if(mousePressed == true &&
+          (mouseY >= (menu_y_pos + (vertical_spacing * 7))) && 
+          (mouseY <= (menu_y_pos + (vertical_spacing * 7) + vertical_spacing/2)) && 
+          (mouseX >= menu_x_pos + (menu_width * 1/4)) && 
+          (mouseX <= menu_x_pos + (menu_width * 3/4)))
+    {
+      if(cooldown <= 0)
+      {
+        for(int i = 0; i < 3; i++)
+        {
+          int stock = int(random(0, 6));
+          int amount = int(random(50, 201));
+          
+          resource_stock[stock] += amount;
+        }
+        
+        cooldown = 20;
+        start_time = millis();
+      }
+    }
+    
+    String cooldown_status = "(Cooldown " + cooldown + " seconds left)";
+    
+    if(cooldown > 0)
+    {
+      fill(20);
+      textAlign(CENTER, TOP);
+      text(cooldown_status, menu_width/2, menu_y_pos + (vertical_spacing * 8));
+    }
   }
   
 }

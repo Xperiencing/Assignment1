@@ -408,12 +408,12 @@ class Ship
       ammunition_bottom.beginShape();
       ammunition_bottom.noFill();
       ammunition_bottom.stroke(150);
-      ammunition_bottom.vertex(top_weapon_x, top_weapon_y);
-      ammunition_bottom.vertex(top_weapon_x + ammunition_width, top_weapon_y);
-      ammunition_bottom.vertex(top_weapon_x + (ammunition_width * 1.5), top_weapon_y + ammunition_height/2);
-      ammunition_bottom.vertex(top_weapon_x + ammunition_width, top_weapon_y + ammunition_height);
-      ammunition_bottom.vertex(top_weapon_x, top_weapon_y + ammunition_height);
-      ammunition_bottom.vertex(top_weapon_x, top_weapon_y);
+      ammunition_bottom.vertex(bottom_weapon_x, bottom_weapon_y);
+      ammunition_bottom.vertex(bottom_weapon_x + ammunition_width, bottom_weapon_y);
+      ammunition_bottom.vertex(bottom_weapon_x + (ammunition_width * 1.5), bottom_weapon_y + ammunition_height/2);
+      ammunition_bottom.vertex(bottom_weapon_x + ammunition_width, bottom_weapon_y + ammunition_height);
+      ammunition_bottom.vertex(bottom_weapon_x, bottom_weapon_y + ammunition_height);
+      ammunition_bottom.vertex(bottom_weapon_x, bottom_weapon_y);
       ammunition_bottom.endShape();
       
       //Drawing the bullets.
@@ -423,6 +423,15 @@ class Ship
       //Increasing the variable for moement.
       top_weapon_x += 5;
       bottom_weapon_x += 5;
+      
+      if(top_weapon_x > width && bottom_weapon_x > width)
+      {
+        top_weapon_x = temp_weapon_top;
+        bottom_weapon_x = temp_weapon_bottom;
+      }
+      
+      fill(150);
+      text("Spacebar to exit", width/2, height * 1/8);
       
     }
     

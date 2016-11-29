@@ -7,6 +7,7 @@ int start_time, counter = 1;
 int function_check = 0, menu_check = 0;
 int first_run = 0, j = 1, check = 0;
 int fade_in = 0;
+int cooldown = 0;
 
 float temp_x_pos = 0, temp_y_pos = 0;
 float temp_star_size = 0;
@@ -69,12 +70,12 @@ String [] resources = {"Food",
                         "Fuel",
                         "Energy"
                       };
-
-//The shapeds for the ammunation that are fired from the weapons
-PShape ammunition_top, ammunition_bottom;
                       
 //This is the current stock of all the resources available on the ship.
 int [] resource_stock = {200, 150, 100, 250, 100, 100};
+
+//The shapeds for the ammunation that are fired from the weapons
+PShape ammunition_top, ammunition_bottom;
 
 //setting up the basic ship model before changes.
 Ship spaceship = new Ship(ship_upgrades[0], ship_upgrades[1], ship_upgrades[2], ship_upgrades[3], ship_upgrades[4]);

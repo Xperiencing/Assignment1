@@ -80,7 +80,7 @@ void select_star()
           margin, margin, radians(0), radians(counter));
           
       //This increases the angle of the arc as long as the mouse stays hovered over a star.
-      counter += 5;
+      counter += 8;
       
       //Checking if the user has clicked on the star to go to the current location of the ship.
       if(mousePressed && stars_list.get(i).current_location == 1)
