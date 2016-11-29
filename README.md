@@ -40,3 +40,4 @@ the current stock of all resources and gives an option to scavenge for more mate
 This file contains all the global variables, the setup function and the draw function. The draw function
 a variable called menu_check which controls what part of the program is running. 
 
+![video](https://www.youtube.com/watch?v=tR5mCmyj9_Q&feature=youtu.be)
