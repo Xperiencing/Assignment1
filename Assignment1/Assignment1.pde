@@ -9,6 +9,8 @@ int first_run = 0, j = 1, check = 0;
 int fade_in = 0;
 int cooldown = 0;
 
+long space_time;
+
 float temp_x_pos = 0, temp_y_pos = 0;
 float temp_star_size = 0;
 float temp_width = 0, temp_height = 0;
@@ -49,7 +51,7 @@ String [] crew_members = {"John Doe",
                          };
 
 //This is the current status of all crew members, 1 being in a perfect state.
-float [] mental_status = {1, 0, 1, 1, 1};
+float [] mental_status = {.72, .59, .24, 1, .9};
 
 //This is a list of the ships parts.
 String [] ship_parts = {"Hull",
@@ -146,6 +148,7 @@ void draw()
     case 3:
     { 
       change_scene();
+      space_time = millis();
       break;
     }
     
