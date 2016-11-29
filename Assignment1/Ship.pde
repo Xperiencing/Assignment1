@@ -430,6 +430,7 @@ class Ship
         bottom_weapon_x = temp_weapon_bottom;
       }
       
+      //Letting the user know how to get out of the fire weapon function.
       fill(150);
       text("Spacebar to exit", width/2, height * 1/8);
       
@@ -437,7 +438,54 @@ class Ship
     
     if(weapon_status == 2)
     {
+      //Creating the shapes for both the top and bottom bullets coming from the weapon.
+      ammunition_top = createShape();
+      ammunition_top.beginShape();
+      ammunition_top.noFill();
+      ammunition_top.stroke(150);
+      ammunition_top.vertex(top_weapon_x, top_weapon_y);
+      ammunition_top.vertex(top_weapon_x + ammunition_width/2, top_weapon_y);
+      ammunition_top.vertex(top_weapon_x + ammunition_width/2, top_weapon_y + ammunition_height * 1/5);
+      ammunition_top.vertex(top_weapon_x + ammunition_width * 2, top_weapon_y + ammunition_height * 1/5);
+      ammunition_top.vertex(top_weapon_x + ammunition_width * 2, top_weapon_y + ammunition_height * 4/5);
+      ammunition_top.vertex(top_weapon_x + ammunition_width/2, top_weapon_y + ammunition_height * 4/5);
+      ammunition_top.vertex(top_weapon_x + ammunition_width/2, top_weapon_y + ammunition_height);
+      ammunition_top.vertex(top_weapon_x, top_weapon_y + ammunition_height);
+      ammunition_top.vertex(top_weapon_x, top_weapon_y);
+      ammunition_top.endShape();
       
+      ammunition_bottom = createShape();
+      ammunition_bottom.beginShape();
+      ammunition_bottom.noFill();
+      ammunition_bottom.stroke(150);
+      ammunition_bottom.vertex(bottom_weapon_x, bottom_weapon_y);
+      ammunition_bottom.vertex(bottom_weapon_x + ammunition_width/2, bottom_weapon_y);
+      ammunition_bottom.vertex(bottom_weapon_x + ammunition_width/2, bottom_weapon_y + ammunition_height * 1/5);
+      ammunition_bottom.vertex(bottom_weapon_x + ammunition_width * 2, bottom_weapon_y + ammunition_height * 1/5);
+      ammunition_bottom.vertex(bottom_weapon_x + ammunition_width * 2, bottom_weapon_y + ammunition_height * 4/5);
+      ammunition_bottom.vertex(bottom_weapon_x + ammunition_width/2, bottom_weapon_y + ammunition_height * 4/5);
+      ammunition_bottom.vertex(bottom_weapon_x + ammunition_width/2, bottom_weapon_y + ammunition_height);
+      ammunition_bottom.vertex(bottom_weapon_x, bottom_weapon_y + ammunition_height);
+      ammunition_bottom.vertex(bottom_weapon_x, bottom_weapon_y);
+      ammunition_bottom.endShape();
+      
+      //Drawing the bullets.
+      shape(ammunition_top);
+      shape(ammunition_bottom);
+      
+      //Increasing the variable for moement.
+      top_weapon_x += 5;
+      bottom_weapon_x += 5;
+      
+      if(top_weapon_x > width && bottom_weapon_x > width)
+      {
+        top_weapon_x = temp_weapon_top;
+        bottom_weapon_x = temp_weapon_bottom;
+      }
+      
+      //Letting the user know how to get out of the fire weapon function.
+      fill(150);
+      text("Spacebar to exit", width/2, height * 1/8);
     }
   }
 }  
