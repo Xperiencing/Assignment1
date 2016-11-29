@@ -127,27 +127,65 @@ class Button
       fill(20);
       textAlign(LEFT, TOP);
       text(crew_members[i], menu_x_pos + horizontal_spacing, menu_y_pos + (i  * vertical_spacing));
-      rect(menu_x_pos + menu_width/2, menu_y_pos + (i  * vertical_spacing), menu_width/2 - horizontal_spacing, vertical_spacing/2);
+      rect(menu_x_pos + menu_width/2, menu_y_pos + (i  * vertical_spacing), menu_width/2 - horizontal_spacing, vertical_spacing/2, 5);
         
       if(mental_status[i] > 0)
       {
         fill(0, 150, 0);
-        rect(menu_x_pos + menu_width/2, menu_y_pos + (i  * vertical_spacing), bar_width, vertical_spacing/2);
+        rect(menu_x_pos + menu_width/2, menu_y_pos + (i  * vertical_spacing), bar_width, vertical_spacing/2, 5);
       }
       
       //If the status dips to 0 or below the crew member will die.
       else
       {
         fill(150);
-        textAlign(CENTER, BOTTOM);
-        text("DEAD", (menu_x_pos + menu_width/2) + ((menu_width/2 - horizontal_spacing)/2), (menu_y_pos + (i  * vertical_spacing) + vertical_spacing/2));
+        textAlign(CENTER, TOP);
+        text("DEAD", (menu_x_pos + menu_width/2) + ((menu_width/2 - horizontal_spacing)/2), (menu_y_pos + (i  * vertical_spacing)), 5);
       }
     }
   }
   
   void upgrade_ship(float menu_x_pos, float menu_y_pos, float menu_width, float menu_height)
   {
+    //Setting out the spacing between the different aspects of this menu.
+    float vertical_spacing = menu_height/6;
+    float horizontal_spacing = 5;
+    
+    //This string is added to the array of strings that holds the ship parts, which is displayed on buttons.
+    String s = " Upgrade";
+    
+    //This is the outline for the menu.
     rect(menu_x_pos, menu_y_pos, menu_width, menu_height, 5);
+    
+    //This is the for loop printing out the options for the ship upgrades.
+    for(int i = 0; i < ship_parts.length; i++)
+    {
+      textAlign(LEFT, TOP);
+      fill(20);
+      text(ship_parts[i], menu_x_pos + horizontal_spacing, menu_y_pos + (i  * vertical_spacing));
+      
+      rect(menu_x_pos + menu_width/2, menu_y_pos + (i  * vertical_spacing), menu_width/2 - horizontal_spacing, vertical_spacing/3, 5);
+      
+      textAlign(CENTER, TOP);
+      fill(150);
+      String upgrade = ship_parts[i] + s;
+      text(upgrade, (menu_x_pos + menu_width/2) + ((menu_width/2 - horizontal_spacing)/2), menu_y_pos + (i  * vertical_spacing)); 
+    }
+    
+    //This final button is used to enable/disable the weapons on board the ship.
+    fill(20);
+    rect(menu_x_pos + (menu_width * 1/4), menu_y_pos + (menu_height * 7/8),
+          menu_width/2, vertical_spacing/3);
+    
+    fill(150);
+    if(weapon_status == 0)
+    {
+      text("Enable Weapons", menu_x_pos + menu_width/2, menu_y_pos + (menu_height * 7/8));
+    }
+    else
+    {
+      text("Disable Weapons", menu_x_pos + menu_width/2, menu_y_pos + (menu_height * 7/8));
+    }
   }
   
   void resource_monitor(float menu_x_pos, float menu_y_pos, float menu_width, float menu_height)

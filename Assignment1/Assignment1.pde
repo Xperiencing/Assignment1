@@ -51,6 +51,13 @@ String [] crew_members = {"John Doe",
 
 float [] mental_status = {1, 0, 1, 1, 1};
 
+String [] ship_parts = {"Hull",
+                         "Cockpit",
+                         "Stabilisers",
+                         "Weapon",
+                         "Engine"
+                       };
+
 //The array needs to be first initalised with 5 numbers, as height and width cannot be used before they are 
 //declared in setup.
 float [] button_menu_size = {1, 1, 1, 1, 0}; 
