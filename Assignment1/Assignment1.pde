@@ -38,7 +38,7 @@ String [] button_names = {"Test Weapon",
                             "Resource Monitor",
                             };
 
-//The names of the members of the crew
+//The names of the members of the crew.
 String [] crew_members = {"John Doe",
                            "Hazel Soap",
                            "Daniel Scrub",
@@ -46,8 +46,10 @@ String [] crew_members = {"John Doe",
                            "Sarah jeans"
                          };
 
+//This is the current status of all crew members, 1 being in a perfect state.
 float [] mental_status = {1, 1, 1, 1, 1};
 
+//This is a list of the ships parts.
 String [] ship_parts = {"Hull",
                          "Cockpit",
                          "Stabilisers",
@@ -55,7 +57,20 @@ String [] ship_parts = {"Hull",
                          "Engine"
                        };
 
+//This array controls the upgrades and weapon switches on the ship.
 int [] ship_upgrades = {1, 1, 1, 0, 1};
+
+//This array of strings contains the names of all the resources available on the ship.
+String [] resources = {"Food",
+                        "Water",
+                        "Oxygen",
+                        "Metal",
+                        "Fuel",
+                        "Energy"
+                      };
+                      
+//This is the current stock of all the resources available on the ship.
+int [] resource_stock = {200, 150, 100, 250, 100, 100};
 
 //setting up the basic ship model before changes.
 Ship spaceship = new Ship(ship_upgrades[0], ship_upgrades[1], ship_upgrades[2], ship_upgrades[3], ship_upgrades[4]);

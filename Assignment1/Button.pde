@@ -187,30 +187,35 @@ class Button
         textAlign(CENTER, TOP);
         fill(150);
         text(upgrade, (menu_x_pos + menu_width/2) + ((menu_width/2 - horizontal_spacing)/2), menu_y_pos + (i  * vertical_spacing)); 
+        
+        fill(20);
+        text("Cost 200 Metal", (menu_x_pos + menu_width/2) + ((menu_width/2 - horizontal_spacing)/2), (menu_y_pos + (i  * vertical_spacing)) + vertical_spacing/3); 
       }
       
+      //This checks if the mouse is over the relevant button, and if so when pressed 
+      //it will either upgrade the part if not already fully upgraded or change the weapon.
       if(mousePressed == true &&
           (mouseY >= (menu_y_pos + (i  * vertical_spacing))) && 
           (mouseY <= (menu_y_pos + (i  * vertical_spacing)) + vertical_spacing/3) && 
           (mouseX >= (menu_x_pos + menu_width/2)) && 
           (mouseX <= (menu_width - horizontal_spacing)))
       {
-        if(ship_upgrades[i] < 3 && ship_parts[i] != "Weapons")
+        if(ship_upgrades[i] < 3 && ship_parts[i] != "Weapon")
         {
           ship_upgrades[i]++;
-          delay(100);
+          delay(150);
         }
         
-        if(ship_upgrades[i] == 1 && ship_parts[i] == "Weapons")
+        if(weapon_status == 1 && ship_parts[i] == "Weapon")
         {
           ship_upgrades[i] = 2;
-          delay(100);
+          delay(150);
         }
         
-        if(ship_upgrades[i] == 2 && ship_parts[i] == "Weapons")
+        if(weapon_status == 2 && ship_parts[i] == "Weapon")
         {
           ship_upgrades[i] = 1;
-          delay(100);
+          delay(150);
         }
       }
     }
@@ -230,6 +235,8 @@ class Button
       text("Disable Weapons", menu_x_pos + menu_width/2, menu_y_pos + (menu_height * 7/8));
     }
     
+    //Checking if the mouse is over the button or not and when pressed it will check whether 
+    //to disable or re-enable to weapon system.
     if(mousePressed == true &&
           (mouseY >= (menu_y_pos + (menu_height * 7/8))) && 
           (mouseY <= (menu_y_pos + (menu_height * 7/8)) + vertical_spacing/3) && 
@@ -252,6 +259,8 @@ class Button
   void resource_monitor(float menu_x_pos, float menu_y_pos, float menu_width, float menu_height)
   {
     rect(menu_x_pos, menu_y_pos, menu_width, menu_height, 5);
+    
+    
   }
   
 }
