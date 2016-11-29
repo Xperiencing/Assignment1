@@ -229,7 +229,10 @@ class Ship
         
         bottom_weapon_x = (weapon_start_x + (weapon_width * 3));
         bottom_weapon_y = weapon_start_y + weapon_height;
-              
+        
+        top_weapon_height = 
+        bottom_weapon_height = 
+        
         weapon_status = 1;
               
         break;
@@ -331,7 +334,7 @@ class Ship
   {
     if(weapon_status == 1)
     {
-        
+      //rect()
     }
     
     if(weapon_status == 2)

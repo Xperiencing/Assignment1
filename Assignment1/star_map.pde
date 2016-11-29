@@ -53,7 +53,7 @@ void star_map()
 
 void select_star()
 {
-  //The margin is 
+  //The margin is the width of the arc that will animate around the star.
   int margin = 50;
   strokeWeight(1.5);
   
@@ -103,10 +103,10 @@ void select_star()
              //This creates two lines coming from the animated circle which will lead into a box.
              line(temp_x_pos + margin/2, temp_y_pos, temp_x_pos + margin, temp_y_pos);
              line(temp_x_pos + margin, temp_y_pos, temp_x_pos + (margin * 2), temp_y_pos + (margin * 2));
-             
+                    
              //A new object of the box class is created with parameters meant to match up with the previous lines drawn.
              Box info_box = new Box(temp_width, temp_height, temp_x_pos + (margin * 2), temp_y_pos + (margin * 2), i);
-             info_box.draw_box();
+             info_box.draw_box();         
              
              //This writes the text neatly into the box that is drawn.
              fill(255);

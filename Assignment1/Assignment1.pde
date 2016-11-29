@@ -20,6 +20,7 @@ float engine_temperature = 200;
 //These are the positions for the ammunation coming from the weapons.
 float top_weapon_x, top_weapon_y;
 float bottom_weapon_x, bottom_weapon_y;
+float top_weapon_height, bottom_weapon_height;
 
 //These variables are used in the ship overveiw.
 int hide_UI = 0, move_ship = 0, weapon_status = 0;
@@ -47,8 +48,8 @@ float [] button_menu_size = {1, 1, 1, 1, 0};
 void setup()
 {
   //Setting up the screen size.
-  fullScreen();
-  //size(1000, 1000);
+  //fullScreen();
+  size(1000, 1000);
   background(0);
   stroke(0);
   smooth(8);
@@ -77,7 +78,7 @@ void draw()
     }
     
     //This is a small delay between the initialising screen and the star map.
-    case 4:
+    case 1:
     {
       if(j > 0)
       {
@@ -95,7 +96,7 @@ void draw()
     }
     
     //This is the drawing of the star map.
-    case 3:
+    case 2:
     {
       star_map();
       select_star();
@@ -103,7 +104,7 @@ void draw()
     }
     
     //This is the screen transitionbetween the star map and the ship.
-    case 2:
+    case 3:
     { 
       change_scene();
       break;
