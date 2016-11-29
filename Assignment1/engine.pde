@@ -12,16 +12,19 @@ float engine_temp()
   
   //The change temperature varialbe will be used to randomly change the engine temperature.
   //This will be reflected in the guage in the bottom left corner of the screen.
-  change_temperature = int(random(0, 10));
-  
-  if(change_temperature == 1)
+  if(frameCount % 10 == 0)
   {
-    engine_temperature++;
-  }
-  
-  if(change_temperature == 3)
-  {
-    engine_temperature--;
+    change_temperature = int(random(0, 10));
+    
+    if(change_temperature == 1)
+    {
+      engine_temperature++;
+    }
+    
+    if(change_temperature == 3)
+    {
+      engine_temperature--;
+    }
   }
   
   //j is the variable that controls how much the colour changes based on the temperature.
@@ -56,9 +59,13 @@ float engine_temp()
   
   //This prints out the exact engine temperature in the bottom left hand corner of the screen.
   textSize(50);
-  textAlign(RIGHT);
+  textAlign(CENTER);
   fill(255, temperature_colour, 0);
-  text(int(engine_temperature), width, height);
+  text(int(engine_temperature), width - 80, height - 80);
+  
+  textSize(18);
+  fill(150);
+  text("Engine Temp °C", width - 80, height - 60);
   
   return outer_radius;
 }

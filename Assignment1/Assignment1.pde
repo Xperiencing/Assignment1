@@ -47,7 +47,7 @@ String [] crew_members = {"John Doe",
                          };
 
 //This is the current status of all crew members, 1 being in a perfect state.
-float [] mental_status = {1, 1, 1, 1, 1};
+float [] mental_status = {1, 0, 1, 1, 1};
 
 //This is a list of the ships parts.
 String [] ship_parts = {"Hull",
