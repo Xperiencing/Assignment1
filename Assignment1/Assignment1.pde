@@ -112,7 +112,7 @@ void draw()
   switch (menu_check)
   {
     //This starts the intialising screen before the interface opens.
-    case 4:
+    case 0:
     {
       initialize();
       break;
@@ -153,7 +153,7 @@ void draw()
     }
     
     //This is the drawing of the ship and its overveiw.
-    case 0:
+    case 4:
     {
       background(0);
       
