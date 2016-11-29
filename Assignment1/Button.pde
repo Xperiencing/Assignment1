@@ -209,12 +209,14 @@ class Button
         if(weapon_status == 1 && ship_parts[i] == "Weapon")
         {
           ship_upgrades[i] = 2;
+          first_run = 0;
           delay(150);
         }
         
         if(weapon_status == 2 && ship_parts[i] == "Weapon")
         {
           ship_upgrades[i] = 1;
+          first_run = 0;
           delay(150);
         }
       }
@@ -246,11 +248,13 @@ class Button
       if (weapon_status == 0)
       {
         ship_upgrades[3] = 1;
+        first_run = 0;
         delay(100);
       } 
       else
       {
         ship_upgrades[3] = 0;
+        first_run = 0;
         delay(100);
       }
     }

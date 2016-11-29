@@ -262,18 +262,25 @@ class Ship
         rect(weapon_start_x + (weapon_width * 1/4), weapon_start_y + weapon_height,
               weapon_width * 3, weapon_height * .5);
         
-        //Setting these variables so that the function fire weapon works correctly.
-        top_weapon_x = (weapon_start_x + (weapon_width * 3));
-        top_weapon_y = (start_point_y - (weapon_height * 1.5));
-        
-        bottom_weapon_x = (weapon_start_x + (weapon_width * 3));
-        bottom_weapon_y = weapon_start_y + weapon_height;
-        
-        top_weapon_height = 
-        bottom_weapon_height = 
+        if(first_run == 0 && hide_UI == 1)
+        {
+          //Setting these variables so that the function fire weapon works correctly.
+          top_weapon_x = (weapon_start_x + (weapon_width * 3));
+          top_weapon_y = (start_point_y - (weapon_height * 1.5));
+          
+          bottom_weapon_x = (weapon_start_x + (weapon_width * 3));
+          bottom_weapon_y = weapon_start_y + weapon_height;
+          
+          ammunition_width = weapon_width/2;
+          ammunition_height = weapon_height/2;
+          
+          temp_weapon_top = top_weapon_x;
+          temp_weapon_bottom = bottom_weapon_x;
+          
+          first_run++;
+        }
         
         weapon_status = 1;
-              
         break;
       
       }
@@ -307,13 +314,24 @@ class Ship
             
         arc(weapon_start_x + (weapon_width * 2.5), weapon_start_y + (weapon_height * 1.5),
             weapon_height, weapon_height, radians(-90), HALF_PI);
-            
-        //Setting these variables so that the function fire weapon works correctly.
-        top_weapon_x = (weapon_start_x + (weapon_width * 2.5));
-        top_weapon_y = start_point_y - (weapon_height * 1.5);
         
-        bottom_weapon_x = (weapon_start_x + (weapon_width * 2.5));
-        bottom_weapon_y = weapon_start_y + (weapon_height * 1.5);
+        if(first_run == 0 && hide_UI == 1)
+        {    
+          //Setting these variables so that the function fire weapon works correctly.
+          top_weapon_x = (weapon_start_x + (weapon_width * 2.5));
+          top_weapon_y = start_point_y - (weapon_height * 1.5);
+          
+          bottom_weapon_x = (weapon_start_x + (weapon_width * 2.5));
+          bottom_weapon_y = weapon_start_y + (weapon_height * 1.5);
+          
+          ammunition_width = weapon_width/2;
+          ammunition_height = weapon_height/2;
+          
+          temp_weapon_top = top_weapon_x;
+          temp_weapon_bottom = bottom_weapon_x;
+          
+          first_run++;
+        }
             
         weapon_status = 2;
         
@@ -372,7 +390,39 @@ class Ship
   void fire_weapon()
   {
     if(weapon_status == 1)
-    {
+    { 
+      //Creating the shapes for both the top and bottom bullets coming from the weapon.
+      ammunition_top = createShape();
+      ammunition_top.beginShape();
+      ammunition_top.noFill();
+      ammunition_top.stroke(150);
+      ammunition_top.vertex(top_weapon_x, top_weapon_y);
+      ammunition_top.vertex(top_weapon_x + ammunition_width, top_weapon_y);
+      ammunition_top.vertex(top_weapon_x + (ammunition_width * 1.5), top_weapon_y + ammunition_height/2);
+      ammunition_top.vertex(top_weapon_x + ammunition_width, top_weapon_y + ammunition_height);
+      ammunition_top.vertex(top_weapon_x, top_weapon_y + ammunition_height);
+      ammunition_top.vertex(top_weapon_x, top_weapon_y);
+      ammunition_top.endShape();
+      
+      ammunition_bottom = createShape();
+      ammunition_bottom.beginShape();
+      ammunition_bottom.noFill();
+      ammunition_bottom.stroke(150);
+      ammunition_bottom.vertex(top_weapon_x, top_weapon_y);
+      ammunition_bottom.vertex(top_weapon_x + ammunition_width, top_weapon_y);
+      ammunition_bottom.vertex(top_weapon_x + (ammunition_width * 1.5), top_weapon_y + ammunition_height/2);
+      ammunition_bottom.vertex(top_weapon_x + ammunition_width, top_weapon_y + ammunition_height);
+      ammunition_bottom.vertex(top_weapon_x, top_weapon_y + ammunition_height);
+      ammunition_bottom.vertex(top_weapon_x, top_weapon_y);
+      ammunition_bottom.endShape();
+      
+      //Drawing the bullets.
+      shape(ammunition_top);
+      shape(ammunition_bottom);
+      
+      //Increasing the variable for moement.
+      top_weapon_x += 5;
+      bottom_weapon_x += 5;
       
     }
     

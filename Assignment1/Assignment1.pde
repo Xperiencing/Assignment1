@@ -20,7 +20,8 @@ float engine_temperature = 200;
 //These are the positions for the ammunation coming from the weapons.
 float top_weapon_x, top_weapon_y;
 float bottom_weapon_x, bottom_weapon_y;
-float top_weapon_height, bottom_weapon_height;
+float ammunition_width, ammunition_height;
+float temp_weapon_top, temp_weapon_bottom;
 
 //These variables are used in the ship overveiw.
 int hide_UI = 0, move_ship = 0, weapon_status = 0;
@@ -68,6 +69,9 @@ String [] resources = {"Food",
                         "Fuel",
                         "Energy"
                       };
+
+//The shapeds for the ammunation that are fired from the weapons
+PShape ammunition_top, ammunition_bottom;
                       
 //This is the current stock of all the resources available on the ship.
 int [] resource_stock = {200, 150, 100, 250, 100, 100};
@@ -153,6 +157,11 @@ void draw()
       {         
         engine_temp();
         control_panel();
+      }
+      
+      if(move_ship == 1)
+      {
+        spaceship.fire_weapon();
       }
       
       Ship spaceship = new Ship(ship_upgrades[0], ship_upgrades[1], ship_upgrades[2], ship_upgrades[3], ship_upgrades[4]);
