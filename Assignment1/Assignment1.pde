@@ -41,6 +41,16 @@ String [] button_names = {"Test Weapon",
                             "Resource Monitor",
                             };
 
+//The names of the members of the crew
+String [] crew_members = {"John Doe",
+                           "Hazel Soap",
+                           "Daniel Scrub",
+                           "Melissa yarn",
+                           "Sarah jeans"
+                         };
+
+float [] mental_status = {1, 0, 1, 1, 1};
+
 //The array needs to be first initalised with 5 numbers, as height and width cannot be used before they are 
 //declared in setup.
 float [] button_menu_size = {1, 1, 1, 1, 0}; 
@@ -48,8 +58,8 @@ float [] button_menu_size = {1, 1, 1, 1, 0};
 void setup()
 {
   //Setting up the screen size.
-  //fullScreen();
-  size(1000, 1000);
+  fullScreen();
+  //size(1000, 1000);
   background(0);
   stroke(0);
   smooth(8);

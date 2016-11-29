@@ -103,13 +103,46 @@ class Button
        hide_UI = 1;
        move_ship = 1;
        
-       
+       spaceship.fire_weapon();
      }
   }
   
   void crew_status(float menu_x_pos, float menu_y_pos, float menu_width, float menu_height)
   {
+    //Setting out the spacing between the different aspects of this menu.
+    float vertical_spacing = menu_height/5;
+    float horizontal_spacing = 5;
+    
+    //Declaring the width of the status bar for the crew members.
+    float bar_width;
+    
+    //Draing the actual menu box.
     rect(menu_x_pos, menu_y_pos, menu_width, menu_height, 5);
+    
+    //This for loop is used to print out each crew mmber and their respective current status.
+    for(int i = 0; i < crew_members.length; i++)
+    {
+      bar_width = (menu_width/2 - horizontal_spacing) * mental_status[i];
+      
+      fill(20);
+      textAlign(LEFT, TOP);
+      text(crew_members[i], menu_x_pos + horizontal_spacing, menu_y_pos + (i  * vertical_spacing));
+      rect(menu_x_pos + menu_width/2, menu_y_pos + (i  * vertical_spacing), menu_width/2 - horizontal_spacing, vertical_spacing/2);
+        
+      if(mental_status[i] > 0)
+      {
+        fill(0, 150, 0);
+        rect(menu_x_pos + menu_width/2, menu_y_pos + (i  * vertical_spacing), bar_width, vertical_spacing/2);
+      }
+      
+      //If the status dips to 0 or below the crew member will die.
+      else
+      {
+        fill(150);
+        textAlign(CENTER, BOTTOM);
+        text("DEAD", (menu_x_pos + menu_width/2) + ((menu_width/2 - horizontal_spacing)/2), (menu_y_pos + (i  * vertical_spacing) + vertical_spacing/2));
+      }
+    }
   }
   
   void upgrade_ship(float menu_x_pos, float menu_y_pos, float menu_width, float menu_height)

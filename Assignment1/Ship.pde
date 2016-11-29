@@ -334,7 +334,7 @@ class Ship
   {
     if(weapon_status == 1)
     {
-      //rect()
+      
     }
     
     if(weapon_status == 2)
