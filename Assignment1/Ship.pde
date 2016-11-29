@@ -197,6 +197,7 @@ class Ship
       case 0:
       {
         //This is just a case to disable weapons on the ship.
+        weapon_status = 0;
         break;
       }
       case 1:
@@ -221,6 +222,15 @@ class Ship
               
         rect(weapon_start_x + (weapon_width * 1/4), weapon_start_y + weapon_height,
               weapon_width * 3, weapon_height * .5);
+        
+        //Setting these variables so that the function fire weapon works correctly.
+        top_weapon_x = (weapon_start_x + (weapon_width * 3));
+        top_weapon_y = (start_point_y - (weapon_height * 1.5));
+        
+        bottom_weapon_x = (weapon_start_x + (weapon_width * 3));
+        bottom_weapon_y = weapon_start_y + weapon_height;
+              
+        weapon_status = 1;
               
         break;
       
@@ -255,12 +265,18 @@ class Ship
             
         arc(weapon_start_x + (weapon_width * 2.5), weapon_start_y + (weapon_height * 1.5),
             weapon_height, weapon_height, radians(-90), HALF_PI);
-           
-      }
-      
-      case 3:
-      {
+            
+        //Setting these variables so that the function fire weapon works correctly.
+        top_weapon_x = (weapon_start_x + (weapon_width * 2.5));
+        top_weapon_y = start_point_y - (weapon_height * 1.5);
         
+        bottom_weapon_x = (weapon_start_x + (weapon_width * 2.5));
+        bottom_weapon_y = weapon_start_y + (weapon_height * 1.5);
+            
+        weapon_status = 2;
+        
+        break;
+           
       }
     }
   }
@@ -309,6 +325,19 @@ class Ship
        
     }
 
+  }
+  
+  void fire_weapon()
+  {
+    if(weapon_status == 1)
+    {
+        
+    }
+    
+    if(weapon_status == 2)
+    {
+      
+    }
   }
 }  
     

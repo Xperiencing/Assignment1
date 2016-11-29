@@ -14,10 +14,15 @@ float temp_width = 0, temp_height = 0;
 
 float angle;
 
+//The starting temperature for the engine.
 float engine_temperature = 200;
 
+//These are the positions for the ammunation coming from the weapons.
+float top_weapon_x, top_weapon_y;
+float bottom_weapon_x, bottom_weapon_y;
+
 //These variables are used in the ship overveiw.
-int hide_UI = 0, move_ship = 0;
+int hide_UI = 0, move_ship = 0, weapon_status = 0;
 
 //Initialising a new font variable.
 PFont mono;
@@ -26,7 +31,7 @@ PFont mono;
 ArrayList<Star> stars_list = new ArrayList<Star>(); 
 
 //setting up the basic ship model before changes.
-Ship spaceship = new Ship(1, 1, 1, 0, 1);
+Ship spaceship = new Ship(1, 1, 1, 1, 1);
 
 //The array of strings containing all of the names of the buttons in the ship screen.
 String [] button_names = {"Test Weapon",

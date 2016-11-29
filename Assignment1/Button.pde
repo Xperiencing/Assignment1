@@ -94,7 +94,7 @@ class Button
     textAlign(CENTER);
     text("FIRE", menu_x_pos + (menu_width/2), (menu_y_pos + menu_height/2) + spacing);
     
-     if(mousePressed == true && 
+     if(mousePressed == true && weapon_status != 0 && 
           (mouseY >= (menu_y_pos + (menu_height * 1/6))) && 
           (mouseY <= (menu_y_pos + (menu_height * 5/6))) && 
           (mouseX >= (menu_x_pos + menu_width/2) - (menu_height/2)) && 
@@ -102,6 +102,8 @@ class Button
      {
        hide_UI = 1;
        move_ship = 1;
+       
+       
      }
   }
   
