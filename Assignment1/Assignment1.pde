@@ -105,7 +105,7 @@ void draw()
   switch (menu_check)
   {
     //This starts the intialising screen before the interface opens.
-    case 5:
+    case 4:
     {
       initialize();
       break;

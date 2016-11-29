@@ -158,36 +158,75 @@ class Ship
   
   void draw_stabilisers(float start_point_x, float start_point_y, float hull_width, float hull_height)
   {
-    switch (stabilisers_type)
+    //This is the default layour for the stabilisers
+    if(stabilisers_type == 1)
     {
-      case 1:
-      {
-        //This is the code for the top wing/stabiliser.
-        line(start_point_x + (hull_width * 1/8), start_point_y,
-              start_point_x, start_point_y - (hull_height * .5));
-              
-        line(start_point_x, start_point_y - (hull_height * .5),
-              start_point_x + (hull_width * 3/4), start_point_y);
-        
-        //This is the code for the bottom.
-        line(start_point_x + (hull_width * 1/8), start_point_y + hull_height,
-              start_point_x, start_point_y + (hull_height * 1.5));
-              
-        line(start_point_x, (start_point_y + (hull_height * 1.5)),
-              start_point_x + (hull_width * 3/4), start_point_y + hull_height);
-        
-      }
+      //This is the code for the top wing/stabiliser.
+      line(start_point_x + (hull_width * 1/8), start_point_y,
+            start_point_x, start_point_y - (hull_height * .5));
+            
+      line(start_point_x, start_point_y - (hull_height * .5),
+            start_point_x + (hull_width * 3/4), start_point_y);
       
-      case 2:
-      {
-        
-      }
+      //This is the code for the bottom.
+      line(start_point_x + (hull_width * 1/8), start_point_y + hull_height,
+            start_point_x, start_point_y + (hull_height * 1.5));
+            
+      line(start_point_x, (start_point_y + (hull_height * 1.5)),
+            start_point_x + (hull_width * 3/4), start_point_y + hull_height);
       
-      case 3:
-      {
-        
-      }
     }
+    
+    //The is the first upgrade for the stabilisers.
+    if(stabilisers_type == 2 || stabilisers_type == 3)
+    {
+      //This is the code for the top wing/stabiliser.
+      line(start_point_x + (hull_width * 1/8), start_point_y,
+            start_point_x + (hull_width * 1/8), start_point_y - (hull_height * 3/4));
+
+      line(start_point_x + (hull_width * 1/8), start_point_y - (hull_height * 3/4),
+            start_point_x + (hull_width * 3/4), start_point_y);
+            
+      line(start_point_x + (hull_width * 1/8), start_point_y - (hull_height * 3/5),
+            start_point_x + (hull_width * 3/4), start_point_y);
+            
+      //This is the code for the bottom.
+      line(start_point_x + (hull_width * 1/8), start_point_y + hull_height,
+            start_point_x + (hull_width * 1/8), start_point_y + (hull_height * 7/4));
+            
+      line(start_point_x + (hull_width * 1/8), (start_point_y + (hull_height * 7/4)),
+            start_point_x + (hull_width * 3/4), start_point_y + hull_height);
+            
+      line(start_point_x + (hull_width * 1/8), (start_point_y + (hull_height * 8/5)),
+            start_point_x + (hull_width * 3/4), start_point_y + hull_height);
+            
+      
+    }
+    
+    //This is the second upgrade for the stabilisers.
+    if(stabilisers_type == 3)
+    {
+      //This is the code for the top wing/stabiliser.
+      line(start_point_x + (hull_width * 1/8), start_point_y - (hull_height * 3/5),
+            start_point_x + (hull_width * 1/20), start_point_y - (hull_height * 3/5));
+            
+      line(start_point_x + (hull_width * 1/20), start_point_y - (hull_height * 3/5),
+            start_point_x + (hull_width * 1/20), start_point_y - (hull_height * 7/10));
+            
+      line(start_point_x + (hull_width * 1/20), start_point_y - (hull_height * 7/10),
+            start_point_x + (hull_width * 1/8), start_point_y - (hull_height * 7/10));
+            
+      //This is the code for the bottom wing/stabiliser.
+      line(start_point_x + (hull_width * 1/8), start_point_y + (hull_height * 8/5),
+            start_point_x + (hull_width * 1/20), start_point_y + (hull_height * 8/5));
+            
+      line(start_point_x + (hull_width * 1/20), start_point_y + (hull_height * 8/5),
+            start_point_x + (hull_width * 1/20), start_point_y + (hull_height * 17/10));
+            
+      line(start_point_x + (hull_width * 1/20), start_point_y + (hull_height * 17/10),
+            start_point_x + (hull_width * 1/8), start_point_y + (hull_height * 17/10));
+    }
+    
   }
   
   void draw_weapon(float start_point_x, float start_point_y, float hull_width, float hull_height)
